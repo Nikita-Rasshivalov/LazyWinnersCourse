@@ -19,8 +19,8 @@ const Header = () => {
     const speed = 3;
     let direction = 1;
     let animationFrameId;
-  
     const moveText = () => {
+
       position += speed * direction;
   
       if (position >= parent.offsetWidth - text.offsetWidth) {
@@ -41,6 +41,7 @@ const Header = () => {
     const handleResize = (e) => {
       if (!e.matches) {
         cancelAnimationFrame(animationFrameId); // Останавливаем анимацию, если экран стал меньше 1025px
+        text.style.transform = `translateX(${0}px)`;
       } else {
         moveText(); // Перезапускаем анимацию, если экран снова больше 1024px
       }
