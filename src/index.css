@@ -397,6 +397,10 @@ body {
     font-size: 2rem;
 }
 
+.header__running-wrapper {
+  width: 90%;
+}
+
   .img--get-course {
     position: absolute;
     width: 20%;
@@ -421,6 +425,11 @@ body {
   .logo-text {
     font-size: 1.6rem;
   }
+
+  .header__running-wrapper {
+    width: 70%;
+  }
+
   .header__inner {
     flex-direction: row;
     padding: 1rem 3rem;

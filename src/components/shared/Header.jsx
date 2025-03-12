@@ -5,6 +5,10 @@ const Header = () => {
   const textRef = useRef(null);
 
   useEffect(() => {
+    const mediaQuery = window.matchMedia("(min-width: 1025px)");
+  
+    if (!mediaQuery.matches) return; // Проверяем ширину экрана
+  
     const text = textRef.current;
     if (!text) return;
   
@@ -12,26 +16,44 @@ const Header = () => {
     if (!parent) return;
   
     let position = 0;
-    const speed = 0; // Скорость движения
-    let direction = 1; // Направление движения (1 - вправо, -1 - влево)
+    const speed = 3;
+    let direction = 1;
+    let animationFrameId;
   
     const moveText = () => {
       position += speed * direction;
   
       if (position >= parent.offsetWidth - text.offsetWidth) {
-        direction = -1; // Двигаемся влево
+        direction = -1;
       }
   
       if (position <= 0) {
-        direction = 1; // Двигаемся вправо
+        direction = 1;
       }
   
       text.style.transform = `translateX(${position}px)`;
-      requestAnimationFrame(moveText);
+      animationFrameId = requestAnimationFrame(moveText);
     };
   
     moveText();
+  
+    // Отслеживаем изменение ширины экрана
+    const handleResize = (e) => {
+      if (!e.matches) {
+        cancelAnimationFrame(animationFrameId); // Останавливаем анимацию, если экран стал меньше 1025px
+      } else {
+        moveText(); // Перезапускаем анимацию, если экран снова больше 1024px
+      }
+    };
+  
+    mediaQuery.addEventListener("change", handleResize);
+  
+    return () => {
+      mediaQuery.removeEventListener("change", handleResize);
+      cancelAnimationFrame(animationFrameId);
+    };
   }, []);
+  
   
   return (
     <header className="header">
