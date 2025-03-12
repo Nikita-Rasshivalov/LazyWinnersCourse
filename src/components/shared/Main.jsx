@@ -20,9 +20,11 @@ const Main = () => {
             {ABOUT_COURSE_TXT}
           </span>
 
-          <div className="main__extra-data"> 
+          <div className="main__extra-data" > 
+          <div className="get-buttons__wrapper">
           <GetButton  imgSrc={MailIcn} text="Купить через"/>
           <GetButton  imgSrc={TgIcn} text="Купить через"/>
+          </div>
           <CurrencyValue />
           </div>
          

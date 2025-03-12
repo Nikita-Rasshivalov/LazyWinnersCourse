@@ -1,5 +1,5 @@
 import TgIcn from "../../assets/content/tg_icn.svg"
-import InstIcn from "../../assets/content/tg_icn.svg"
+import InstIcn from "../../assets/content/inst_icn.svg"
 import MailIcn from "../../assets/content/mail_icn.svg"
 
 const Footer = () => {
@@ -18,7 +18,7 @@ const Footer = () => {
           </a>
         </div>
         <div className="footer_dsc">
-          <span>Веду общение лично. По вопросам оплаты и любым другим - пишите.</span>
+          <span className="footer_dsc-txt">Веду общение лично. По вопросам оплаты и любым другим - пишите.</span>
         </div>
         <div className="footer__logo">
           <img src="./content/logo.png" alt="Логотип" className="footer__logo-image logo-image" />

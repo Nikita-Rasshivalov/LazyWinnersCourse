@@ -12,7 +12,7 @@ const Header = () => {
     if (!parent) return;
   
     let position = 0;
-    const speed = 3; // Скорость движения
+    const speed = 0; // Скорость движения
     let direction = 1; // Направление движения (1 - вправо, -1 - влево)
   
     const moveText = () => {
