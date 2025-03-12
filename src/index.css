@@ -1,0 +1,245 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
+
+:root {
+  --text-color-base: #eaecef;
+  --bg-color: #181a20;
+  --color-textBrand: #f0b90b;
+  --color-BtnBg: #fcd535;
+  --color-TradeBg-txt: #0b0e11;
+  --color-primaryHover: #f0b90b;
+  --color-clc: #c69e1a;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  font-family: "Inter", serif;
+  font-weight: 700;
+  height: 100%;
+}
+
+.wrapper {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.header,
+.footer {
+  background-color: var(--bg-color);
+  color: var(--text-color-base);
+}
+
+/* Стили для Header */
+.header__inner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem 3rem;
+  position: relative;
+}
+
+.header__logo,
+.footer__logo {
+  display: flex;
+  align-items: center;
+}
+
+.logo-text {
+  font-size: 2rem;
+  padding-left: 0.5rem;
+}
+
+.logo-image {
+  width: 2.6rem;
+}
+
+.header__button {
+  background-color: var(--color-BtnBg);
+  color: var(--color-TradeBg-txt);
+  font-weight: 700;
+  width: 8rem;
+  border: none;
+  outline: none;
+  padding: 0.5rem;
+  border-radius: 5px;
+}
+
+.button:hover {
+  background-color: var(--color-primaryHover);
+}
+
+.button:active {
+  background-color: var(--color-clc);
+}
+
+.running-text__icon {
+  width: 1.5rem;
+}
+
+.header__running-text {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.header__running-wrapper {
+  display: flex;
+  overflow: hidden;
+  flex-grow: 1;
+}
+
+/* Стили для Main */
+.main {
+  background-color: var(--bg-color);
+  color: var(--text-color-base);
+  flex: 1 1 auto;
+}
+
+.main__container {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  align-items: flex-start;
+}
+
+.main__about {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 0rem 5rem 0;
+}
+
+.main__text {
+  line-height: 1.3;
+  font-weight: 400;
+}
+
+.main__text-about {
+  font-size: 1rem;
+  text-align: justify;
+  text-indent: 2rem;
+}
+
+.main__about-img {
+  width: calc(30rem + 10vw);
+  border-radius: 1em;
+}
+
+.main__about-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  width: calc(30rem + 10vw);
+  gap: 0.8rem;
+}
+
+.main__text-course {
+  font-size: 0.85rem;
+  white-space: pre-wrap;
+}
+
+.main__about,
+.main__course {
+  flex: 1;
+  padding-top: 1.5rem;
+}
+
+.main__course__currency-value {
+  display: flex;
+  align-content: center;
+  align-items: center;
+}
+
+.main__course__currency-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  padding-right: 3rem;
+}
+
+.main__course-cost {
+  font-size: 2.5rem;
+}
+
+.original-price {
+  text-decoration: line-through;
+  color: gray;
+}
+
+.currency-logo {
+  width: 2rem;
+  filter: invert(75%) sepia(91%) saturate(502%) hue-rotate(359deg)
+    brightness(102%) contrast(94%);
+}
+
+.button--get-course {
+  background-color: var(--color-BtnBg);
+  color: var(--color-TradeBg-txt);
+  font-weight: 700;
+  font-size: 1em;
+  width: 10rem;
+  border: none;
+  outline: none;
+  padding: 0.7rem;
+  border-radius: 5px;
+  position: relative;
+  display: flex;
+}
+
+.main__extra-data {
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.img--get-course {
+  position: absolute;
+  width: 20%;
+  left: 75%;
+  top: 5%;
+}
+
+/* Стили для Footer */
+.footer__container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem 3rem 1rem;
+}
+
+.footer__socials {
+  display: flex;
+  gap: 1rem;
+}
+
+.footer__socials-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.2rem;
+  height: 2.2rem;
+  border-radius: 50%;
+  background-color: var(--color-BtnBg);
+  transition: background-color 0.3s;
+}
+
+.footer__socials-item:hover {
+  background-color: #f39c12;
+}
+
+.footer__socials-icon {
+  width: 1.5rem;
+  height:  1.5rem;
+}
