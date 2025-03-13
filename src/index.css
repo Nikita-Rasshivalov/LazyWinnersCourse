@@ -401,12 +401,12 @@ body {
   width: 90%;
 }
 
-  .img--get-course {
-    position: absolute;
-    width: 20%;
-    left: 75%;
-    top: 5%;
-  }
+.img--get-course {
+  position: absolute;
+  width: 15%;
+  left: 75%;
+  top: 18%;
+}
 
   .button--get-course {
     width: 15rem;

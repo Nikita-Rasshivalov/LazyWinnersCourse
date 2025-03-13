@@ -1,5 +1,6 @@
 import { useEffect, useRef } from "react";
 import dollarIcon from "../../assets/content/dollar.png";
+import  {smoothScroll} from '../../utils/smoothScroll'
 
 const Header = () => {
   const textRef = useRef(null);
@@ -74,7 +75,7 @@ const Header = () => {
               <img src={dollarIcon} alt="Доллар" className="running-text__icon" />
           </div>
         </div>
-        <button className="header__button button">Получить</button>
+        <button className="header__button button" onClick={() => smoothScroll("get-course__anchor",200)}>Получить</button>
       </div>
     </header>
   );
