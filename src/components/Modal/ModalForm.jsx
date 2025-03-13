@@ -1,6 +1,6 @@
 import "./ModalForm.css";
 
-import { useState, useEffect } from "react";
+import { useState,useEffect } from "react";
 
 export const ModalForm = ({ isOpen, onClose, onSubmit }) => {
   const [email, setEmail] = useState("");
@@ -13,21 +13,27 @@ export const ModalForm = ({ isOpen, onClose, onSubmit }) => {
     setEmail("");
     setMessage("");
   };
-
   useEffect(() => {
-    document.body.style.overflow = isOpen ? "hidden" : "auto";
-
+    const toggleScrollLock = (lock) => {
+      const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
+      document.body.style.overflow = lock ? "hidden" : "auto";
+      document.body.style.paddingRight = lock ? `${scrollbarWidth}px` : "0px";
+    };
+  
+    toggleScrollLock(isOpen);
+  
     if (!isOpen) {
       setEmail("");
       setMessage("");
     }
-
+  
     return () => {
-      document.body.style.overflow = "auto";
+      toggleScrollLock(false);
       setEmail("");
       setMessage("");
     };
   }, [isOpen]);
+  
 
   if (!isOpen) return null;
 
@@ -35,9 +41,7 @@ export const ModalForm = ({ isOpen, onClose, onSubmit }) => {
     <div className="modal">
       <div className="modal__overlay" onClick={onClose}></div>
       <div className="modal__content">
-        <button className="modal__close" onClick={onClose}>
-          ✖
-        </button>
+        <button className="modal__close" onClick={onClose}>✖</button>
         <h2 className="modal__title">Отправить сообщение</h2>
         <form className="modal__form" onSubmit={handleSubmit}>
           <input
@@ -63,3 +67,4 @@ export const ModalForm = ({ isOpen, onClose, onSubmit }) => {
     </div>
   );
 };
+
