@@ -1,11 +1,16 @@
-import { ABOUT_TXT, ABOUT_COURSE_TXT } from "../../assets/data/Constants";
+import { ABOUT_TXT, ABOUT_COURSE_TXT,TG_URL } from "../../assets/data/Constants";
 import AboutImg from "../../assets/content/abouImg.png";
 import CurrencyValue from "../CurrencyValue";
 import GetButton from "../GetButton";
 import MailIcn from "../../assets/content/mail_icn.svg"
 import TgIcn from "../../assets/content/tg_icn.svg"
 
-const Main = () => {
+
+const Main = ({ openModal }) => {
+  const handlMailBtnClick = () => {
+    openModal(); 
+  };
+  
   return (
     <main className="main">
       <div className="main__container">
@@ -19,15 +24,13 @@ const Main = () => {
           <span className="main__text main__text-course">
             {ABOUT_COURSE_TXT}
           </span>
-
           <div className="main__extra-data" > 
           <div className="get-buttons__wrapper" id="get-course__anchor">
-          <GetButton  imgSrc={MailIcn} text="Купить через"/>
-          <GetButton  imgSrc={TgIcn} text="Купить через"/>
+          <GetButton  imgSrc={MailIcn}  onClick={handlMailBtnClick} text="Купить через"/>
+          <GetButton  imgSrc={TgIcn}  onClick={() => window.open(TG_URL, "_blank")} text="Купить через"/>
           </div>
           <CurrencyValue />
-          </div>
-         
+          </div>   
         </section>
       </div>
     </main>

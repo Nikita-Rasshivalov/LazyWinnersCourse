@@ -59,3 +59,10 @@ export const ABOUT_COURSE_TXT =
 export const COURSE_PRICE = `700`
 
 export const COURSE_PRICE_DISCOUNT = `350`
+
+export const TG_URL = "https://t.me/lazywinners"
+
+export const INST_URL = "https://www.instagram.com/pa1boys"
+
+export const MAIL_URL = "mailto:example@mail.com"
+

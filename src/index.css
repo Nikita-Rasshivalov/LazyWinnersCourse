@@ -218,6 +218,7 @@ body {
   border-radius: 50%;
   background-color: var(--color-BtnBg);
   transition: background-color 0.3s;
+  border: none;
 }
 
 .footer__socials-item:hover {
@@ -508,7 +509,7 @@ body {
   }
 }
 
-/* Large (lg) – устройства от 2560px */
-@media (min-width: 2560px){
+/* Large (lg) – устройства от 1900px */
+@media (min-width: 1900px){
 
 }
