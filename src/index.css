@@ -23,7 +23,6 @@ body {
   height: 100%;
 }
 
-
 .wrapper {
   min-height: 100vh;
   display: flex;
@@ -360,7 +359,6 @@ body {
   .button--get-course {
     width: 35%;
     font-size: 1.25rem;
-    
   }
 
   .get-buttons__wrapper {
@@ -392,23 +390,22 @@ body {
 
 /* Mid (md) – устройства от 1024 */
 @media (min-width: 1024px) {
-
   .header__button {
     width: 50%;
     padding: 1.4rem;
     font-size: 2rem;
-}
+  }
 
-.header__running-wrapper {
-  width: 90%;
-}
+  .header__running-wrapper {
+    width: 90%;
+  }
 
-.img--get-course {
-  position: absolute;
-  width: 15%;
-  left: 75%;
-  top: 18%;
-}
+  .img--get-course {
+    position: absolute;
+    width: 15%;
+    left: 75%;
+    top: 18%;
+  }
 
   .button--get-course {
     width: 15rem;
@@ -416,7 +413,7 @@ body {
     font-size: 1.5rem;
     flex-direction: row;
     justify-content: normal;
-}
+  }
 }
 
 /* Large (lg) – устройства от 1440 */
@@ -452,6 +449,7 @@ body {
   .main__container {
     flex-direction: row;
     margin-top: 0;
+    gap: 2rem;
   }
 
   .main__about-img {
@@ -511,6 +509,93 @@ body {
 }
 
 /* Large (lg) – устройства от 1900px */
-@media (min-width: 1900px){
+@media (min-width: 1900px) {
+  .logo-text {
+    font-size: 4.5rem;
+  }
 
+  .logo-image {
+    width: 4.6rem;
+  }
+
+  .header__button {
+    width: 15rem;
+    padding: 0.9rem;
+    font-size: 2rem;
+  }
+  .header__running-wrapper {
+    width: 50%;
+  }
+
+  .header__running-text > p {
+    font-size: 3.5rem;
+  }
+
+  .running-text__icon {
+    width: 3rem;
+  }
+
+  .main__about-info {
+    display: flex;
+  }
+
+  .main__about-img {
+    width: calc(60rem + 10vw);
+  }
+
+  .main__about-info {
+    width: calc(60rem + 10vw);
+  }
+
+  .main__extra-data {
+    flex-direction: column-reverse;
+    gap: 1rem;
+  }
+
+  .main__course__currency-wrapper {
+    gap: 15rem;
+  }
+  .main__text-about {
+    font-size: 3rem;
+  }
+
+  .main__text-course {
+    font-size: 2.5rem;
+  }
+
+  .button--get-course {
+    width: 30rem;
+    height: auto;
+    font-size: 3rem;
+  }
+  .img--get-course {
+    width: 12%;
+    left: 73%;
+    top: 15%;
+  }
+
+  .main__course-cost {
+    font-size: 4.5rem;
+  }
+
+  .currency-logo {
+    width: 4rem;
+  }
+
+  .footer_dsc-txt {
+    font-size: 2.7rem;
+  }
+
+  .footer__socials-item {
+    width: 6rem;
+    height: 6rem;
+  }
+  .footer__socials-icon {
+    width: 4rem;
+    height: 4rem;
+  }
+
+  .logo-text {
+    white-space: nowrap;
+  }
 }
