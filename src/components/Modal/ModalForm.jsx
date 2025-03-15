@@ -1,47 +1,32 @@
 import "./ModalForm.css";
+import { useState } from "react";
+import { sendEmail } from "../../utils/sendEmail";
+import { useScrollLock } from "../../hooks/useScrollLock";
 
-import { useState,useEffect } from "react";
-
-export const ModalForm = ({ isOpen, onClose, onSubmit }) => {
+export const ModalForm = ({ isOpen, onClose }) => {
   const [email, setEmail] = useState("");
+  const [name, setName] = useState("");
   const [message, setMessage] = useState("");
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    onSubmit({ email, message });
+    sendEmail(name,email, message);
     onClose();
     setEmail("");
+    setName("");
     setMessage("");
   };
-  useEffect(() => {
-    const toggleScrollLock = (lock) => {
-      const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
-      document.body.style.overflow = lock ? "hidden" : "auto";
-      document.body.style.paddingRight = lock ? `${scrollbarWidth}px` : "0px";
-    };
-  
-    toggleScrollLock(isOpen);
-  
-    if (!isOpen) {
-      setEmail("");
-      setMessage("");
-    }
-  
-    return () => {
-      toggleScrollLock(false);
-      setEmail("");
-      setMessage("");
-    };
-  }, [isOpen]);
-  
 
+  useScrollLock(isOpen);
   if (!isOpen) return null;
 
   return (
     <div className="modal">
-      <div className="modal__overlay" onClick={onClose}></div>
+      <div className="modal__overlay"></div>
       <div className="modal__content">
-        <button className="modal__close" onClick={onClose}>✖</button>
+        <button className="modal__close" onClick={onClose}>
+          ✖
+        </button>
         <h2 className="modal__title">Отправить сообщение</h2>
         <form className="modal__form" onSubmit={handleSubmit}>
           <input
@@ -49,6 +34,14 @@ export const ModalForm = ({ isOpen, onClose, onSubmit }) => {
             placeholder="Ваш email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
+            className="modal__input"
+            required
+          />
+          <input
+            type="text"
+            placeholder="Ваше имя"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
             className="modal__input"
             required
           />
@@ -67,4 +60,3 @@ export const ModalForm = ({ isOpen, onClose, onSubmit }) => {
     </div>
   );
 };
-
