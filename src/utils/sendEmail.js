@@ -9,13 +9,16 @@ export const sendEmail = async (name,email, message) => {
   
     try {
       await emailjs.send(
-        "service_3mg8uh9", // Ваш Service ID
-        "template_cqcsfnb", // Ваш Template ID
+        process.env.REACT_APP_SERVICE_ID , // Ваш Service ID
+        process.env.REACT_APP_TEMPLATE_ID , // Ваш Template ID
         templateParams,
-        "2k6jz4F5MTpc4IDnW" // Ваш Public Key
+        process.env.REACT_APP_API_KEY // Ваш Public Key
       );
     } catch (error) {
       console.error("Ошибка при отправке email:", error);
     }
   };
+  
+
+
   
