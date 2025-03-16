@@ -13,7 +13,7 @@ const Layout = () => {
       <Header />
       <Main openModal={openModal} />
       <Footer openModal={openModal} />
-      <ModalForm isOpen={isOpen} onClose={closeModal} onSubmit={(data) => console.log(data)} />
+      <ModalForm isOpen={isOpen} onClose={closeModal} />
       <Background />
     </div>
   );

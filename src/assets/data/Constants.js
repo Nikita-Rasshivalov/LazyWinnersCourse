@@ -64,4 +64,12 @@ export const TG_URL = "https://t.me/lazywinners"
 
 export const INST_URL = "https://www.instagram.com/pa1boys"
 
+export const CURRENCY_ICN_URL ="content/currency.svg"
+
+export const MAIL_ICN_URL ="content/mail_icn.svg"
+
+export const TG_ICN_URL ="content/tg_icn.svg"
+
+export const INST_ICN_URL ="content/inst_icn.svg"
+
 
