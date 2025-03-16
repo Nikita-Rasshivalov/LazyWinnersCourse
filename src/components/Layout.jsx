@@ -4,7 +4,7 @@ import Main from "./shared/Main";
 import Background from "./Background";
 import useModal from  "../hooks/useModal"
 import {ModalForm} from "./Modal/ModalForm"
-
+import React from 'react';
 
 const Layout = () => {
   const { isOpen, openModal, closeModal } = useModal();
@@ -13,7 +13,7 @@ const Layout = () => {
       <Header />
       <Main openModal={openModal} />
       <Footer openModal={openModal} />
-      <ModalForm isOpen={isOpen} onClose={closeModal} />
+      <ModalForm isOpen={isOpen} onClose={closeModal} onSubmit={(data) => console.log(data)} />
       <Background />
     </div>
   );

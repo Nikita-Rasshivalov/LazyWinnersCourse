@@ -1,5 +1,5 @@
-import dollarIcon from "../../assets/content/dollar.png";
 import  {smoothScroll} from '../../utils/smoothScroll'
+import React from 'react';
 
 const Header = () => {
   
@@ -16,9 +16,9 @@ const Header = () => {
         </div>
         <div className="header__wrapper">
           <div className="header__text" >
-              <img src={dollarIcon} alt="Доллар" className="text__icon" />
+              <img src="content/dollar.png" alt="Доллар" className="text__icon" />
               <p>Прочитайте всю информацию - все для вас</p>
-              <img src={dollarIcon} alt="Доллар" className="text__icon" />
+              <img src="content/dollar.png" alt="Доллар" className="text__icon" />
           </div>
         </div>
         <button className="header__button button" onClick={() => smoothScroll("get-course__anchor",200)}>Получить</button>

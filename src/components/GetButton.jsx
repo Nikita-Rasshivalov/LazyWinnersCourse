@@ -1,3 +1,5 @@
+import React from 'react';
+
 const GetButton = ({ imgSrc, text,onClick = () => {} }) => {
     return (
       <button className="button--get-course button" onClick = {onClick }>
