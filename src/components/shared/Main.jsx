@@ -2,10 +2,12 @@ import {
   ABOUT_TXT,
   ABOUT_COURSE_TXT,
   TG_URL,
+  VIDEO_URL
 } from "../../assets/data/Constants";
-import CurrencyValue from "../CurrencyValue";
-import GetButton from "../GetButton";
+import CurrencyValue from "../MainComponents/CurrencyValue";
+import GetButton from "../Buttons/GetButton";
 import React from "react";
+import VideoPlayer from "../Player/VideoPlayer"  
 
 const Main = ({ openModal }) => {
   const handlMailBtnClick = () => {
@@ -23,6 +25,7 @@ const Main = ({ openModal }) => {
               alt="aboutImg"
             />
             <span className="main__text main__text-about">{ABOUT_TXT}</span>
+            <VideoPlayer src={VIDEO_URL}/>
           </div>
         </section>
         <section className="main__course">

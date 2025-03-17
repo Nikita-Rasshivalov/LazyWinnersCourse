@@ -1,0 +1,129 @@
+.video-player {
+  position: relative;
+  width: 100%;
+  max-width: calc(30rem + 10vw);
+  background-color: #000;
+  border-radius: 1rem;
+  box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  margin: 1rem 0;
+  padding: 0.2rem;
+}
+
+.video {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 1rem;
+}
+
+input[type="range"]{
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  outline: none;
+  cursor: pointer;
+}
+
+.seek-bar {
+  border-radius: 8px;
+  height: 0.5rem;
+  width: 100%;
+  outline: none;
+}
+
+.controls {
+  padding: 0 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  align-content: center;
+}
+
+.move-controls,
+.volume-control {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  padding: 1rem 0;
+}
+
+.move-controls button,
+.volume-control button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height:3rem;
+  border-radius: 50%;
+  background-color: var(--color-BtnBg);
+  transition: background-color 0.3s;
+  border: none;
+}
+
+.move-controls button:hover,
+.volume-control button:hover {
+  background: var(--color-primaryHover);
+  transform: scale(1.1);
+  border: none;
+  outline: none;
+}
+
+.move-controls button:active,
+.volume-control button:active {
+  background: var( --color-clc);
+  transform: scale(1);
+  border: none;
+  outline: none;
+}
+
+.volume-bar {
+  width: 6rem; 
+  border-radius: 0.375rem;
+  height: 0.375rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+button svg {
+  width: 2rem;
+  height: 2rem;
+}
+
+.move-controls button svg,
+.volume-control button svg {
+  transition: all 0.3s ease;
+  border: none;
+  outline: none;
+}
+
+
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 1rem;
+  height: 1rem;
+  background: #82CFD0;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+input[type="range"]::-moz-range-thumb {
+  width: 1rem;
+  height: 1rem;
+  background: #82CFD0;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+input[type="range"]::-ms-thumb {
+  width: 1rem;
+  height: 1rem;
+  background: #82CFD0;
+  border-radius: 50%;
+  cursor: pointer;
+}
+

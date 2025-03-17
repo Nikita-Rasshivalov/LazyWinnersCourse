@@ -22,7 +22,6 @@ export const ABOUT_COURSE_TXT =
 
 💡 Что вас ждет?
 ✔️ 70+ модулей интерактивного обучения
-✔️ Видео + тесты для закрепления знаний
 ✔️ Практическое применение ключевых технологий
 
 📌 Программа курса
@@ -71,5 +70,7 @@ export const MAIL_ICN_URL ="content/mail_icn.svg"
 export const TG_ICN_URL ="content/tg_icn.svg"
 
 export const INST_ICN_URL ="content/inst_icn.svg"
+
+export const VIDEO_URL = "content/video1.mp4"
 
 
