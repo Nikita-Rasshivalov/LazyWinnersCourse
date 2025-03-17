@@ -15,7 +15,7 @@ const Background = () => {
         init={particlesInit}
         options={{
           background: {
-            color: "transparent", // Прозрачный фон, чтобы не затирал основной
+            color: "transparent",
           },
           particles: {
             color: { value: ["#FFD700", "#E6A8D7"]},

@@ -49,6 +49,11 @@ body {
   align-items: center;
 }
 
+.header__text > p {
+  display: flex;
+  flex-direction: column;
+}
+
 .logo-image {
   width: 2.6rem;
 }
