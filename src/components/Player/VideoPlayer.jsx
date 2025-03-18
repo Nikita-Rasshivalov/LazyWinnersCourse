@@ -1,4 +1,4 @@
-import { React, useRef, useState, useEffect } from "react";
+import React,{ useRef, useState, useEffect } from "react";
 import { VideoControl } from "./VideoControl";
 import { VolumeControl } from "./VolumeControl";
 import { SeekBar } from "./SeekBar";
