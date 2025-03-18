@@ -83,6 +83,17 @@ export const VolumeControl = ({ isMuted, setIsMuted, videoRef }) => {
     updateVolumeBar();
   }, [localVolume, updateVolume, updateVolumeBar]);
 
+  // Обновление состояния mute при изменении громкости
+  useEffect(() => {
+    if (localVolume === 0) {
+      setIsMuted(true);
+      videoRef.current.muted = true;
+    } else {
+      setIsMuted(false);
+      videoRef.current.muted = false;
+    }
+  }, [localVolume, setIsMuted, videoRef]);
+
   return (
     <div className="volume-control">
       <button onClick={toggleMute}>

@@ -9,6 +9,14 @@
   padding: 0.2rem;
 }
 
+.video-player:active,
+.video-player:focus,
+.video-player:hover
+{
+border: none;
+outline: none;
+}
+
 .video {
   width: 100%;
   height: auto;
