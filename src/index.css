@@ -190,6 +190,10 @@ body {
   display: flex;
 }
 
+.button--get-course:hover {
+  transform: scale(1.1);
+}
+
 .main__extra-data {
   display: flex;
   flex-direction: row;
@@ -228,6 +232,7 @@ body {
 
 .footer__socials-item:hover {
   background-color: #f39c12;
+  transform: scale(1.1);
 }
 
 .footer__socials-icon {
@@ -489,13 +494,13 @@ body {
   }
 
   .footer__socials-item {
-    width: 2.2rem;
-    height: 2.2rem;
+    width: 3rem;
+    height: 3rem;
   }
 
   .footer__socials-icon {
-    width: 1.5rem;
-    height: 1.5rem;
+    width: 2rem;
+    height: 2rem;
   }
 
   .footer__socials {

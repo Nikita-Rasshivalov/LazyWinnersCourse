@@ -1,0 +1,25 @@
+
+.video-dsc-lagre--screen{
+    display: none;
+    overflow: hidden;
+    opacity: 0;
+    z-index: -1;
+} 
+
+@media (min-width:1440px) {
+    .video-dsc-lagre--screen{
+        margin-top: 2rem;
+        display: flex;
+        flex-direction: row;
+        font-size: 3rem;
+        align-items: center;
+        opacity: 1;
+    }
+}
+
+@media (min-width:1900px) {
+    .video-dsc-lagre--screen {
+        margin-top: 25rem;
+        font-size: 5rem;
+    }
+}

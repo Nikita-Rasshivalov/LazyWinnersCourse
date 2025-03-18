@@ -1,13 +1,15 @@
+import React from "react";
+import CurrencyValue from "../MainComponents/CurrencyValue";
+import { VideoDiscriptionLarge } from "../MainComponents/VideoDiscriptionLarge/VideoDiscriptionLarge";
+import { VideoDiscriptionSmall } from "../MainComponents/VideoDiscriptionSmall/VideoDiscriptionSmall";
+import GetButton from "../Buttons/GetButton";
+import VideoPlayer from "../Player/VideoPlayer";
 import {
   ABOUT_TXT,
   ABOUT_COURSE_TXT,
   TG_URL,
-  VIDEO_URL
+  VIDEO_URL,
 } from "../../assets/data/Constants";
-import CurrencyValue from "../MainComponents/CurrencyValue";
-import GetButton from "../Buttons/GetButton";
-import React from "react";
-import VideoPlayer from "../Player/VideoPlayer"  
 
 const Main = ({ openModal }) => {
   const handlMailBtnClick = () => {
@@ -25,7 +27,10 @@ const Main = ({ openModal }) => {
               alt="aboutImg"
             />
             <span className="main__text main__text-about">{ABOUT_TXT}</span>
-            <VideoPlayer src={VIDEO_URL}/>
+            <div className="video--smaill-side">
+              <VideoDiscriptionSmall />
+              <VideoPlayer src={VIDEO_URL} />
+            </div>
           </div>
         </section>
         <section className="main__course">
@@ -47,6 +52,7 @@ const Main = ({ openModal }) => {
             </div>
             <CurrencyValue />
           </div>
+          <VideoDiscriptionLarge />
         </section>
       </div>
     </main>
