@@ -1,7 +1,6 @@
 .video-player {
   position: relative;
   width: 100%;
-  max-width: calc(30rem + 10vw);
   background-color: #000;
   border-radius: 1rem;
   box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.2);
@@ -17,7 +16,15 @@
   border-radius: 1rem;
 }
 
-input[type="range"]{
+.time-display {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-direction: row;
+  align-items: center;
+}
+
+input[type="range"] {
   appearance: none;
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -34,7 +41,6 @@ input[type="range"]{
 }
 
 .controls {
-  padding: 0 2rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -46,8 +52,6 @@ input[type="range"]{
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 1rem;
-  padding: 1rem 0;
 }
 
 .move-controls button,
@@ -55,8 +59,6 @@ input[type="range"]{
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 3rem;
-  height:3rem;
   border-radius: 50%;
   background-color: var(--color-BtnBg);
   transition: background-color 0.3s;
@@ -73,23 +75,18 @@ input[type="range"]{
 
 .move-controls button:active,
 .volume-control button:active {
-  background: var( --color-clc);
+  background: var(--color-clc);
   transform: scale(1);
   border: none;
   outline: none;
 }
 
 .volume-bar {
-  width: 6rem; 
+  width: 6rem;
   border-radius: 0.375rem;
   height: 0.375rem;
   cursor: pointer;
   transition: all 0.3s ease;
-}
-
-button svg {
-  width: 2rem;
-  height: 2rem;
 }
 
 .move-controls button svg,
@@ -99,14 +96,12 @@ button svg {
   outline: none;
 }
 
-
-
 input[type="range"]::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
   width: 1rem;
   height: 1rem;
-  background: #82CFD0;
+  background: #82cfd0;
   border-radius: 50%;
   cursor: pointer;
 }
@@ -114,7 +109,7 @@ input[type="range"]::-webkit-slider-thumb {
 input[type="range"]::-moz-range-thumb {
   width: 1rem;
   height: 1rem;
-  background: #82CFD0;
+  background: #82cfd0;
   border-radius: 50%;
   cursor: pointer;
 }
@@ -122,8 +117,126 @@ input[type="range"]::-moz-range-thumb {
 input[type="range"]::-ms-thumb {
   width: 1rem;
   height: 1rem;
-  background: #82CFD0;
+  background: #82cfd0;
   border-radius: 50%;
   cursor: pointer;
 }
 
+/* media */
+
+@media (min-width: 320px) {
+  .move-controls,
+  .volume-control {
+    gap: 0.3rem;
+    padding: 0.3rem 0;
+  }
+  .move-controls button,
+  .volume-control button {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+
+  button svg {
+    width: 1rem;
+    height: 1rem;
+  }
+
+  .time-display span {
+    font-size: 0.5rem;
+  }
+}
+
+
+@media (min-width: 375px) {
+  .move-controls,
+  .volume-control {
+    gap: 0.4rem;
+    padding: 0.5rem 0;
+  }
+  .move-controls button,
+  .volume-control button {
+    width: 2rem;
+    height: 2rem;
+  }
+
+  button svg {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+  .time-display span {
+    font-size: 0.8rem;
+  }
+}
+
+
+@media (min-width: 768px) {
+  .video-player {
+    max-width: calc(20rem + 10vw);
+  }
+
+  .controls {
+    padding: 0 0.2rem;
+  }
+  .move-controls,
+  .volume-control {
+    gap: 1rem;
+    padding: 1rem 0;
+  }
+  .move-controls button,
+  .volume-control button {
+    width: 2.2rem;
+    height: 2.2rem;
+  }
+
+  button svg {
+    width: 1.8rem;
+    height: 1.8rem;
+  }
+
+  .time-display span {
+    font-size: 1rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .video-player {
+    max-width: calc(25rem + 10vw);
+  }
+  .move-controls button,
+  .volume-control button {
+    width: 3rem;
+    height: 3rem;
+  }
+
+  button svg {
+    width: 2rem;
+    height: 2rem;
+  }
+}
+
+@media (min-width: 1440px) {
+  .video-player {
+    max-width: calc(30rem + 10vw);
+  }
+
+  .controls {
+    padding: 0 2rem;
+  }
+
+  .move-controls button,
+  .volume-control button {
+    width: 3rem;
+    height: 3rem;
+  }
+
+  button svg {
+    width: 2rem;
+    height: 2rem;
+  }
+}
+
+@media (min-width: 1900px) {
+  .video-player {
+    max-width: calc(60rem + 10vw);
+  }
+}
