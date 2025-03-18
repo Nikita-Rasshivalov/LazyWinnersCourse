@@ -11,10 +11,9 @@
 
 .video-player:active,
 .video-player:focus,
-.video-player:hover
-{
-border: none;
-outline: none;
+.video-player:hover {
+  border: none;
+  outline: none;
 }
 
 .video {
@@ -62,9 +61,7 @@ input[type="range"] {
   justify-content: center;
 }
 
-.move-controls button,
-.volume-control button,
-.fullscreen-control {
+.control-button {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -74,18 +71,14 @@ input[type="range"] {
   border: none;
 }
 
-.move-controls button:hover,
-.volume-control button:hover,
-.fullscreen-control:hover {
+.control-button:hover {
   background: var(--color-primaryHover);
   transform: scale(1.1);
   border: none;
   outline: none;
 }
 
-.move-controls button:active,
-.volume-control button:active,
-.fullscreen-control:active {
+.control-button:active {
   background: var(--color-clc);
   transform: scale(1);
   border: none;
@@ -100,9 +93,7 @@ input[type="range"] {
   transition: all 0.3s ease;
 }
 
-.move-controls button svg,
-.volume-control button svg,
-.fullscreen-control svg {
+.control-button svg {
   transition: all 0.3s ease;
   border: none;
   outline: none;
@@ -142,15 +133,12 @@ input[type="range"]::-ms-thumb {
     gap: 0.3rem;
     padding: 0.3rem 0;
   }
-  .move-controls button,
-  .volume-control button,
-  .fullscreen-control {
+  .control-button {
     width: 1.5rem;
     height: 1.5rem;
   }
 
-  button svg,
-  .fullscreen-control svg {
+  .control-buttonl svg {
     width: 1rem;
     height: 1rem;
   }
@@ -166,15 +154,12 @@ input[type="range"]::-ms-thumb {
     gap: 0.4rem;
     padding: 0.5rem 0;
   }
-  .move-controls button,
-  .volume-control button,
-  .fullscreen-control {
+  .control-button {
     width: 2rem;
     height: 2rem;
   }
 
-  button svg,
-  .fullscreen-control svg {
+  .control-button svg {
     width: 1.5rem;
     height: 1.5rem;
   }
@@ -197,15 +182,13 @@ input[type="range"]::-ms-thumb {
     gap: 1rem;
     padding: 1rem 0;
   }
-  .move-controls button,
-  .volume-control button,
-  .fullscreen-control {
+
+  .control-button {
     width: 2.2rem;
     height: 2.2rem;
   }
 
-  button svg,
-  .fullscreen-control svg {
+  .control-button svg {
     width: 1.8rem;
     height: 1.8rem;
   }
@@ -219,15 +202,13 @@ input[type="range"]::-ms-thumb {
   .video-player {
     max-width: calc(35rem + 10vw);
   }
-  .move-controls button,
-  .volume-control button,
-  .fullscreen-control {
+
+  .control-button {
     width: 3rem;
     height: 3rem;
   }
 
-  button svg,
-  .fullscreen-control svg {
+  .control-button svg {
     width: 2rem;
     height: 2rem;
   }
@@ -242,15 +223,12 @@ input[type="range"]::-ms-thumb {
     padding: 0 2rem;
   }
 
-  .move-controls button,
-  .volume-control button,
-  .fullscreen-control {
+  .control-button {
     width: 3rem;
     height: 3rem;
   }
 
-  button svg,
-  .fullscreen-control svg {
+  .control-button svg {
     width: 2rem;
     height: 2rem;
   }

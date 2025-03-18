@@ -96,7 +96,7 @@ export const VolumeControl = ({ isMuted, setIsMuted, videoRef }) => {
 
   return (
     <div className="volume-control">
-      <button onClick={toggleMute}>
+      <button onClick={toggleMute} className="control-button">
         {isMuted ? <VolumeX size={24} /> : <Volume2 size={24} />}
       </button>
       <input

@@ -111,7 +111,7 @@ export default function VideoPlayer({ src }) {
           setIsMuted={setIsMuted}
           videoRef={videoRef}
         />
-        <button onClick={toggleFullScreen} className="fullscreen-control">
+        <button onClick={toggleFullScreen} className="control-button">
           <Maximize size={20} />
         </button>
       </div>
