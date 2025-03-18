@@ -1,7 +1,8 @@
-import React,{ useRef, useState, useEffect } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { VideoControl } from "./VideoControl";
 import { VolumeControl } from "./VolumeControl";
 import { SeekBar } from "./SeekBar";
+import { Maximize } from "lucide-react";
 import "./videoPlayer.css";
 
 export default function VideoPlayer({ src }) {
@@ -56,6 +57,25 @@ export default function VideoPlayer({ src }) {
     }
   };
 
+  const toggleFullScreen = () => {
+    const scrollY = window.scrollY;
+    if (!document.fullscreenElement) {
+      videoRef.current?.requestFullscreen?.();
+    } else {
+      document.exitFullscreen?.();
+    }
+    const handleFullScreenChange = () => {
+      if (!document.fullscreenElement) {
+        window.scrollTo(0, scrollY);
+        document.removeEventListener(
+          "fullscreenchange",
+          handleFullScreenChange
+        );
+      }
+    };
+    document.addEventListener("fullscreenchange", handleFullScreenChange);
+  };
+
   if (!isVideoValid || !src) return null;
 
   return (
@@ -66,6 +86,7 @@ export default function VideoPlayer({ src }) {
         src={src}
         onTimeUpdate={handleTimeUpdate}
         onClick={togglePlay}
+        onDoubleClick={toggleFullScreen}
         onLoadedMetadata={() =>
           setDuration(formatTime(videoRef.current.duration))
         }
@@ -90,6 +111,9 @@ export default function VideoPlayer({ src }) {
           setIsMuted={setIsMuted}
           videoRef={videoRef}
         />
+        <button onClick={toggleFullScreen} className="fullscreen-control">
+          <Maximize size={20} />
+        </button>
       </div>
     </div>
   );

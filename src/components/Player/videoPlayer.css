@@ -55,7 +55,8 @@ input[type="range"] {
 }
 
 .move-controls button,
-.volume-control button {
+.volume-control button,
+.fullscreen-control {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -66,7 +67,8 @@ input[type="range"] {
 }
 
 .move-controls button:hover,
-.volume-control button:hover {
+.volume-control button:hover,
+.fullscreen-control:hover {
   background: var(--color-primaryHover);
   transform: scale(1.1);
   border: none;
@@ -74,7 +76,8 @@ input[type="range"] {
 }
 
 .move-controls button:active,
-.volume-control button:active {
+.volume-control button:active,
+.fullscreen-control:active {
   background: var(--color-clc);
   transform: scale(1);
   border: none;
@@ -90,7 +93,8 @@ input[type="range"] {
 }
 
 .move-controls button svg,
-.volume-control button svg {
+.volume-control button svg,
+.fullscreen-control svg {
   transition: all 0.3s ease;
   border: none;
   outline: none;
@@ -131,12 +135,14 @@ input[type="range"]::-ms-thumb {
     padding: 0.3rem 0;
   }
   .move-controls button,
-  .volume-control button {
+  .volume-control button,
+  .fullscreen-control {
     width: 1.5rem;
     height: 1.5rem;
   }
 
-  button svg {
+  button svg,
+  .fullscreen-control svg {
     width: 1rem;
     height: 1rem;
   }
@@ -146,7 +152,6 @@ input[type="range"]::-ms-thumb {
   }
 }
 
-
 @media (min-width: 375px) {
   .move-controls,
   .volume-control {
@@ -154,20 +159,22 @@ input[type="range"]::-ms-thumb {
     padding: 0.5rem 0;
   }
   .move-controls button,
-  .volume-control button {
+  .volume-control button,
+  .fullscreen-control {
     width: 2rem;
     height: 2rem;
   }
 
-  button svg {
+  button svg,
+  .fullscreen-control svg {
     width: 1.5rem;
     height: 1.5rem;
   }
+
   .time-display span {
     font-size: 0.8rem;
   }
 }
-
 
 @media (min-width: 768px) {
   .video-player {
@@ -183,12 +190,14 @@ input[type="range"]::-ms-thumb {
     padding: 1rem 0;
   }
   .move-controls button,
-  .volume-control button {
+  .volume-control button,
+  .fullscreen-control {
     width: 2.2rem;
     height: 2.2rem;
   }
 
-  button svg {
+  button svg,
+  .fullscreen-control svg {
     width: 1.8rem;
     height: 1.8rem;
   }
@@ -203,12 +212,14 @@ input[type="range"]::-ms-thumb {
     max-width: calc(35rem + 10vw);
   }
   .move-controls button,
-  .volume-control button {
+  .volume-control button,
+  .fullscreen-control {
     width: 3rem;
     height: 3rem;
   }
 
-  button svg {
+  button svg,
+  .fullscreen-control svg {
     width: 2rem;
     height: 2rem;
   }
@@ -224,12 +235,14 @@ input[type="range"]::-ms-thumb {
   }
 
   .move-controls button,
-  .volume-control button {
+  .volume-control button,
+  .fullscreen-control {
     width: 3rem;
     height: 3rem;
   }
 
-  button svg {
+  button svg,
+  .fullscreen-control svg {
     width: 2rem;
     height: 2rem;
   }
