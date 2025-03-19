@@ -1,8 +1,7 @@
 import { Volume2, VolumeX } from "lucide-react";
 import React, { useState, useEffect, useRef, useCallback } from "react";
 
-export const VolumeControl = ({ isMuted, setIsMuted, videoRef }) => {
-  const [localVolume, setLocalVolume] = useState(1);
+export const VolumeControl = ({ isMuted, setIsMuted, videoRef,localVolume,setLocalVolume }) => {
   const [previousVolume, setPreviousVolume] = useState(1); 
   const volumeBarRef = useRef(null);
 
@@ -60,10 +59,9 @@ export const VolumeControl = ({ isMuted, setIsMuted, videoRef }) => {
 
   const adjustVolume = useCallback((delta, event) => {
     event.preventDefault();
-
     const newVolume = Math.min(Math.max(localVolume + delta, 0), 1);
     setLocalVolume(newVolume);
-  }, [localVolume]);
+  }, [localVolume,setLocalVolume]);
 
   useEffect(() => {
     const handleKeyDown = (event) => {
@@ -83,7 +81,6 @@ export const VolumeControl = ({ isMuted, setIsMuted, videoRef }) => {
     updateVolumeBar();
   }, [localVolume, updateVolume, updateVolumeBar]);
 
-  // Обновление состояния mute при изменении громкости
   useEffect(() => {
     if (localVolume === 0) {
       setIsMuted(true);

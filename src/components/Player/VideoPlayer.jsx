@@ -3,13 +3,14 @@ import { VideoControl } from "./VideoControl";
 import { VolumeControl } from "./VolumeControl";
 import { SeekBar } from "./SeekBar";
 import { FullScreenButton } from "./FullScreenButton";
-import {formatTime} from "../../utils/formatTime"
+import { formatTime } from "../../utils/formatTime";
 import "./videoPlayer.css";
 
 export default function VideoPlayer({ src }) {
   const videoRef = useRef(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [isMuted, setIsMuted] = useState(false);
+  const [localVolume, setLocalVolume] = useState(1);
   const [progress, setProgress] = useState(0);
   const [isVideoValid, setIsVideoValid] = useState(true);
   const [currentTime, setCurrentTime] = useState("0:00");
@@ -20,6 +21,7 @@ export default function VideoPlayer({ src }) {
       setIsVideoValid(false);
       return;
     }
+
     const videoElement = videoRef.current;
     const handleError = () => setIsVideoValid(false);
     const handleLoadedData = () => {
@@ -27,11 +29,49 @@ export default function VideoPlayer({ src }) {
       setDuration(formatTime(videoElement.duration));
     };
 
+    const handlePlay = () => {
+      setIsPlaying(true);
+    };
+
+    const handlePause = () => {
+      setIsPlaying(false);
+    };
+
+    const handleEnded = () => {
+      setIsPlaying(false);
+    };
+
     videoElement.addEventListener("error", handleError);
     videoElement.addEventListener("loadeddata", handleLoadedData);
+    videoElement.addEventListener("play", handlePlay);
+    videoElement.addEventListener("pause", handlePause);
+    videoElement.addEventListener("ended", handleEnded);
+
+    const handleVolumeChange = () => {
+      setIsMuted(videoElement.muted);
+      setLocalVolume(videoElement.volume);
+      console.log(videoElement.volume)
+    };
+    
+    videoElement.addEventListener("volumechange", handleVolumeChange);
+
+    const handleFullScreenChange = () => {
+      const isFullscreen = !!document.fullscreenElement;
+      if (!isFullscreen) {
+        const savedScrollY = document.documentElement.dataset.scrollY || "0";
+        window.scrollTo(0, parseInt(savedScrollY, 10));
+      }
+    };
+    document.addEventListener("fullscreenchange", handleFullScreenChange);
+
     return () => {
       videoElement.removeEventListener("error", handleError);
       videoElement.removeEventListener("loadeddata", handleLoadedData);
+      videoElement.removeEventListener("play", handlePlay);
+      videoElement.removeEventListener("pause", handlePause);
+      videoElement.removeEventListener("ended", handleEnded);
+      videoElement.removeEventListener("volumechange", handleVolumeChange);
+      document.removeEventListener("fullscreenchange", handleFullScreenChange);
     };
   }, [src]);
 
@@ -41,16 +81,6 @@ export default function VideoPlayer({ src }) {
     setCurrentTime(formatTime(video.currentTime));
   };
 
-  const togglePlay = () => {
-    if (videoRef.current.paused) {
-      videoRef.current.play();
-      setIsPlaying(true);
-    } else {
-      videoRef.current.pause();
-      setIsPlaying(false);
-    }
-  };
-
   const toggleFullScreen = () => {
     if (!document.fullscreenElement) {
       document.documentElement.dataset.scrollY = window.scrollY;
@@ -58,16 +88,17 @@ export default function VideoPlayer({ src }) {
     } else {
       document.exitFullscreen?.();
     }
-    const handleFullScreenChange = () => {
-      if (!document.fullscreenElement) {
-        const savedScrollY = document.documentElement.dataset.scrollY || "0";
-        window.scrollTo(0, parseInt(savedScrollY, 10));
-        document.removeEventListener("fullscreenchange", handleFullScreenChange);
-      }
-    };
-    document.addEventListener("fullscreenchange", handleFullScreenChange);
   };
-  
+
+  const togglePlay = () => {
+    const video = videoRef.current;
+    if (isPlaying) {
+      video.pause();
+    } else {
+      video.play();
+    }
+  };
+
   if (!isVideoValid || !src) return null;
 
   return (
@@ -76,9 +107,8 @@ export default function VideoPlayer({ src }) {
         ref={videoRef}
         className="video"
         src={src}
+        controlsList="noremoteplayback nofullscreen nodownload"
         onTimeUpdate={handleTimeUpdate}
-        onClick={(e)=>{e.preventDefault();togglePlay()}}
-        onDoubleClick={(e)=>{e.preventDefault();toggleFullScreen()}}
         onLoadedMetadata={() =>
           setDuration(formatTime(videoRef.current.duration))
         }
@@ -102,6 +132,8 @@ export default function VideoPlayer({ src }) {
           isMuted={isMuted}
           setIsMuted={setIsMuted}
           videoRef={videoRef}
+          localVolume={localVolume}
+          setLocalVolume={setLocalVolume}
         />
         <FullScreenButton toggleFullScreen={toggleFullScreen} />
       </div>

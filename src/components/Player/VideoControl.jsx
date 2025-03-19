@@ -28,12 +28,7 @@ export const VideoControl = ({
         case "ArrowRight":
           seek(10);
           break;
-        case " ":
-          event.preventDefault();
-          togglePlay();
-          break;
         default:
-          event.preventDefault();
           break;
       }
     };
