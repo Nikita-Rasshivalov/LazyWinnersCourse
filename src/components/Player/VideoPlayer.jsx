@@ -2,7 +2,8 @@ import React, { useRef, useState, useEffect } from "react";
 import { VideoControl } from "./VideoControl";
 import { VolumeControl } from "./VolumeControl";
 import { SeekBar } from "./SeekBar";
-import { Maximize } from "lucide-react";
+import { FullScreenButton } from "./FullScreenButton";
+import {formatTime} from "../../utils/formatTime"
 import "./videoPlayer.css";
 
 export default function VideoPlayer({ src }) {
@@ -34,13 +35,6 @@ export default function VideoPlayer({ src }) {
     };
   }, [src]);
 
-  const formatTime = (time) => {
-    if (isNaN(time)) return "0:00";
-    const minutes = Math.floor(time / 60);
-    const seconds = Math.floor(time % 60);
-    return `${minutes}:${seconds < 10 ? "0" : ""}${seconds}`;
-  };
-
   const handleTimeUpdate = () => {
     const video = videoRef.current;
     setProgress((video.currentTime / video.duration) * 100);
@@ -58,24 +52,22 @@ export default function VideoPlayer({ src }) {
   };
 
   const toggleFullScreen = () => {
-    const scrollY = window.scrollY;
     if (!document.fullscreenElement) {
+      document.documentElement.dataset.scrollY = window.scrollY;
       videoRef.current?.requestFullscreen?.();
     } else {
       document.exitFullscreen?.();
     }
     const handleFullScreenChange = () => {
       if (!document.fullscreenElement) {
-        window.scrollTo(0, scrollY);
-        document.removeEventListener(
-          "fullscreenchange",
-          handleFullScreenChange
-        );
+        const savedScrollY = document.documentElement.dataset.scrollY || "0";
+        window.scrollTo(0, parseInt(savedScrollY, 10));
+        document.removeEventListener("fullscreenchange", handleFullScreenChange);
       }
     };
     document.addEventListener("fullscreenchange", handleFullScreenChange);
   };
-
+  
   if (!isVideoValid || !src) return null;
 
   return (
@@ -85,8 +77,8 @@ export default function VideoPlayer({ src }) {
         className="video"
         src={src}
         onTimeUpdate={handleTimeUpdate}
-        onClick={togglePlay}
-        onDoubleClick={toggleFullScreen}
+        onClick={(e)=>{e.preventDefault();togglePlay()}}
+        onDoubleClick={(e)=>{e.preventDefault();toggleFullScreen()}}
         onLoadedMetadata={() =>
           setDuration(formatTime(videoRef.current.duration))
         }
@@ -111,9 +103,7 @@ export default function VideoPlayer({ src }) {
           setIsMuted={setIsMuted}
           videoRef={videoRef}
         />
-        <button onClick={toggleFullScreen} className="control-button">
-          <Maximize size={20} />
-        </button>
+        <FullScreenButton toggleFullScreen={toggleFullScreen} />
       </div>
     </div>
   );

@@ -33,6 +33,7 @@ export const VideoControl = ({
           togglePlay();
           break;
         default:
+          event.preventDefault();
           break;
       }
     };
