@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from "react";
+import React, { useRef, useState, useEffect, useCallback } from "react";
 import { VideoControl } from "./VideoControl";
 import { VolumeControl } from "./VolumeControl";
 import { SeekBar } from "./SeekBar";
@@ -7,6 +7,7 @@ import { formatTime } from "../../utils/formatTime";
 import "./videoPlayer.css";
 
 export default function VideoPlayer({ src }) {
+  let clickTimeout = useRef(null);
   const videoRef = useRef(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [isMuted, setIsMuted] = useState(false);
@@ -16,6 +17,15 @@ export default function VideoPlayer({ src }) {
   const [currentTime, setCurrentTime] = useState("0:00");
   const [duration, setDuration] = useState("0:00");
 
+  const togglePlay = useCallback(() => {
+    const video = videoRef.current;
+    if (isPlaying) {
+      video.pause();
+    } else {
+      video.play();
+    }
+  }, [isPlaying]);
+
   useEffect(() => {
     if (!src) {
       setIsVideoValid(false);
@@ -23,7 +33,9 @@ export default function VideoPlayer({ src }) {
     }
 
     const videoElement = videoRef.current;
+
     const handleError = () => setIsVideoValid(false);
+
     const handleLoadedData = () => {
       setIsVideoValid(true);
       setDuration(formatTime(videoElement.duration));
@@ -41,19 +53,10 @@ export default function VideoPlayer({ src }) {
       setIsPlaying(false);
     };
 
-    videoElement.addEventListener("error", handleError);
-    videoElement.addEventListener("loadeddata", handleLoadedData);
-    videoElement.addEventListener("play", handlePlay);
-    videoElement.addEventListener("pause", handlePause);
-    videoElement.addEventListener("ended", handleEnded);
-
     const handleVolumeChange = () => {
       setIsMuted(videoElement.muted);
       setLocalVolume(videoElement.volume);
-      console.log(videoElement.volume)
     };
-    
-    videoElement.addEventListener("volumechange", handleVolumeChange);
 
     const handleFullScreenChange = () => {
       const isFullscreen = !!document.fullscreenElement;
@@ -62,6 +65,36 @@ export default function VideoPlayer({ src }) {
         window.scrollTo(0, parseInt(savedScrollY, 10));
       }
     };
+
+    const handleDoubleClick = (e) => {
+      e.preventDefault();
+      if (clickTimeout.current) {
+        clearTimeout(clickTimeout.current); 
+        clickTimeout.current = null;
+      }
+      toggleFullScreen();
+    };
+
+    const handleOneClick = (e) => {
+      e.preventDefault();
+      if (clickTimeout.current) {
+        clearTimeout(clickTimeout.current);
+      }
+    
+      clickTimeout.current = setTimeout(() => {
+        togglePlay();
+        clickTimeout.current = null;
+      }, 200);
+    };
+
+    videoElement.addEventListener("error", handleError);
+    videoElement.addEventListener("loadeddata", handleLoadedData);
+    videoElement.addEventListener("play", handlePlay);
+    videoElement.addEventListener("pause", handlePause);
+    videoElement.addEventListener("ended", handleEnded);
+    videoElement.addEventListener("volumechange", handleVolumeChange);
+    videoElement.addEventListener("click", handleOneClick);
+    videoElement.addEventListener("dblclick", handleDoubleClick);
     document.addEventListener("fullscreenchange", handleFullScreenChange);
 
     return () => {
@@ -71,9 +104,11 @@ export default function VideoPlayer({ src }) {
       videoElement.removeEventListener("pause", handlePause);
       videoElement.removeEventListener("ended", handleEnded);
       videoElement.removeEventListener("volumechange", handleVolumeChange);
+      videoElement.removeEventListener("click", handleOneClick);
+      videoElement.removeEventListener("dblclick", handleDoubleClick);
       document.removeEventListener("fullscreenchange", handleFullScreenChange);
     };
-  }, [src]);
+  }, [src, togglePlay]);
 
   const handleTimeUpdate = () => {
     const video = videoRef.current;
@@ -87,15 +122,6 @@ export default function VideoPlayer({ src }) {
       videoRef.current?.requestFullscreen?.();
     } else {
       document.exitFullscreen?.();
-    }
-  };
-
-  const togglePlay = () => {
-    const video = videoRef.current;
-    if (isPlaying) {
-      video.pause();
-    } else {
-      video.play();
     }
   };
 
