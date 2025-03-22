@@ -1,8 +1,14 @@
 import Layout from "./components/Layout";
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 function App() {
-  return <Layout />;
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  return mounted ? <Layout /> : null;
 }
 
 export default App;

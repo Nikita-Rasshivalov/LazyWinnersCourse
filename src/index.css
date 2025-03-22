@@ -118,6 +118,15 @@ body {
   font-weight: 400;
 }
 
+.main__text-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: nowrap;
+  width: 100%;
+  padding: 0.3rem 0;
+}
+
 .main__text-about {
   text-align: justify;
 }
@@ -401,7 +410,7 @@ body {
 /* Mid (md) – устройства от 1024 */
 @media (min-width: 1024px) {
   .header__button {
-    width: 50%;
+    width: 80%;
     padding: 1.4rem;
     font-size: 2rem;
   }
@@ -473,7 +482,6 @@ body {
 
   .main__text-about {
     font-size: 1rem;
-    text-indent: 2rem;
   }
 
   .main__extra-data {

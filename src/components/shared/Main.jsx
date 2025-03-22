@@ -26,6 +26,7 @@ const Main = ({ openModal }) => {
               className="main__about-img"
               alt="aboutImg"
             />
+            <h4 className="">Привет!  Я и моя команда занимаемся трейдингом уже более 6 лет.</h4>
             <span className="main__text main__text-about">{ABOUT_TXT}</span>
             <div className="video--smaill-side">
               <VideoDiscriptionSmall />
@@ -34,6 +35,7 @@ const Main = ({ openModal }) => {
           </div>
         </section>
         <section className="main__course">
+          <h3>🚀 Хотите освоить блокчейн на новом уровне? Этот курс – ваш путь к глубокому пониманию криптоиндустрии!</h3>
           <span className="main__text main__text-course">
             {ABOUT_COURSE_TXT}
           </span>
