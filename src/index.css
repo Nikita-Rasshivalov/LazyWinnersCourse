@@ -199,10 +199,6 @@ body {
   display: flex;
 }
 
-.button--get-course:hover {
-  transform: scale(1.1);
-}
-
 .main__extra-data {
   display: flex;
   flex-direction: row;
@@ -432,6 +428,10 @@ body {
     font-size: 1.5rem;
     flex-direction: row;
     justify-content: normal;
+  }
+
+  .button--get-course:hover {
+    transform: scale(1.1);
   }
 }
 
