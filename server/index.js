@@ -37,6 +37,6 @@ app.use(express.static(path.join(__dirname, '../../build')));
 app.use((err, req, res, next) => {
   res.status(500).send('Ошибка сервера');
 });
-app.listen(PORT, () => {
+app.listen(PORT,"0.0.0.0", () => {
   console.log(`Server is listening on port ${PORT}`);
 });

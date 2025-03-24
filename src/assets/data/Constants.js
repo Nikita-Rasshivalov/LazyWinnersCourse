@@ -56,7 +56,7 @@ Web3🌐
 
 export const COURSE_PRICE = `700`
 
-export const COURSE_PRICE_DISCOUNT = `350`
+export const COURSE_PRICE_DISCOUNT = `300`
 
 export const TG_URL = "https://t.me/lazywinners"
 
