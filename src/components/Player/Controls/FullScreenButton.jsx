@@ -14,12 +14,12 @@ export const FullScreenButton = ({toggleFullScreen}) => {
 
     if (button) {
       button.addEventListener("click", handleClick);
-      button.addEventListener("touchstart", handleClick);
+      button.addEventListener("onTouchStart", handleClick);
     }
     return () => {
       if (button) {
         button.removeEventListener("click", handleClick);
-        button.removeEventListener("touchstart", handleClick);
+        button.removeEventListener("onTouchStart", handleClick);
       }
     };
   }, [toggleFullScreen]); 
