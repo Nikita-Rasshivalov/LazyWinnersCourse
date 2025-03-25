@@ -115,23 +115,29 @@ export default function VideoPlayer({ src }) {
     setProgress((video.currentTime / video.duration) * 100);
     setCurrentTime(formatTime(video.currentTime));
   };
-
-  const toggleFullScreen = (event) => {
-    event.preventDefault()
-    if (!document.fullscreenElement && !document.webkitFullscreenElement) {
+  const toggleFullScreen = () => {
+  
+    if (!document.fullscreenElement && !document.webkitFullscreenElement && !document.mozFullScreen) {
       document.documentElement.dataset.scrollY = window.scrollY;
+  
+      // Попытка войти в полноэкранный режим
       if (videoRef.current) {
         if (videoRef.current.requestFullscreen) {
-          videoRef.current.requestFullscreen();
+          videoRef.current.requestFullscreen(); // Стандартный метод для большинства браузеров
         } else if (videoRef.current.webkitRequestFullscreen) {
-          videoRef.current.webkitRequestFullscreen();
+          videoRef.current.webkitRequestFullscreen(); // Safari
+        } else if (videoRef.current.mozRequestFullScreen) {
+          videoRef.current.mozRequestFullScreen(); // Firefox
         }
       }
     } else {
+      // Выход из полноэкранного режима
       if (document.exitFullscreen) {
         document.exitFullscreen();
       } else if (document.webkitExitFullscreen) {
-        document.webkitExitFullscreen();
+        document.webkitExitFullscreen(); // Safari
+      } else if (document.mozCancelFullScreen) {
+        document.mozCancelFullScreen(); // Firefox
       }
     }
   };
@@ -146,6 +152,7 @@ export default function VideoPlayer({ src }) {
         ref={videoRef}
         className="video"
         src={src}
+        playsInline 
         controlsList="noremoteplayback nofullscreen nodownload"
         onTimeUpdate={handleTimeUpdate}
         onLoadedMetadata={() =>
