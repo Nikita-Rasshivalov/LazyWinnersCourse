@@ -146,7 +146,6 @@ export default function VideoPlayer({ src }) {
         ref={videoRef}
         className="video"
         src={src}
-        playsInline 
         controlsList="noremoteplayback nofullscreen nodownload"
         onTimeUpdate={handleTimeUpdate}
         onLoadedMetadata={() =>
