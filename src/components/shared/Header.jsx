@@ -15,7 +15,7 @@ const Header = () => {
         </div>
         <div className="header__wrapper">
           <p className="header__text">
-            <span> «Все упирается в то, как много ты готов терять:</span>
+            <span> «Как много ты готов терять?</span>
             <span>
               <span style={{ color: "#f0b90b" }}> Очень</span> - учась на своих
               ошибках,

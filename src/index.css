@@ -372,9 +372,6 @@ body {
   .footer__socials {
     gap: 4.6rem;
   }
-  .footer_dsc-txt {
-    text-align: end;
-  }
 }
 
 /* Medium (md) – устройства от 768px */
@@ -431,12 +428,12 @@ body {
   }
 
   .footer_dsc-txt {
-    font-size: 1.3rem;
+    font-size: 0.8rem;
   }
 
   .footer__socials {
     gap: 0.6rem;
-}
+  }
 }
 
 /* Mid (md) – устройства от 1024 */
@@ -457,7 +454,6 @@ body {
   .header__text {
     font-size: 1.84rem;
     padding: 0;
-    text-align: start;
   }
   .logo-text {
     font-size: 3rem;
@@ -516,12 +512,14 @@ body {
     padding: 0;
   }
   .logo-text {
-    font-size: 2rem;
+    font-size: 1.5rem;
   }
   .logo-image {
-    width: 3rem;
+    width: 2.5rem;
   }
-
+  .header__wrapper {
+    padding: 0 0.5rem;
+  }
   .header__inner {
     flex-direction: row;
     padding: 1rem 3rem;
@@ -529,14 +527,12 @@ body {
   }
 
   .header__button {
-    width: 15rem;
-    padding: 1rem;
+    width: auto;
     font-size: 1.3rem;
     position: static;
   }
 
   .header__text {
-    text-align: end;
     font-size: 1.25rem;
   }
 
@@ -547,15 +543,15 @@ body {
 
   .main__text-course {
     font-size: 1.2rem;
-}
+  }
 
-.main__course h3 {
-  font-size: 1.2rem;
-}
+  .main__course h3 {
+    font-size: 1.2rem;
+  }
 
-.main__about-info h4{
-  padding-bottom: 0.5rem;
-}
+  .main__about-info h4 {
+    padding-bottom: 0.5rem;
+  }
 
   .main__container {
     flex-direction: row;
@@ -611,7 +607,7 @@ body {
   .footer_dsc {
     padding: 0 6rem;
     flex-grow: 1;
-}
+  }
 
   .button--get-course {
     width: 10rem;
@@ -619,7 +615,7 @@ body {
     font-size: 1rem;
   }
 
-  .footer__logo{
+  .footer__logo {
     flex-shrink: 0;
     justify-content: flex-end;
   }
@@ -641,11 +637,11 @@ body {
     font-size: 2rem;
   }
   .header__wrapper {
-    width: 50%;
+    padding: 0 1rem;
   }
 
   .header__text {
-    font-size: 2.5rem;
+    font-size: 2.2rem;
   }
 
   .text__icon {
@@ -680,9 +676,10 @@ body {
     font-size: 2.8rem;
   }
 
-  .main__course h3, .main__about-info h4 {
+  .main__course h3,
+  .main__about-info h4 {
     font-size: 2.7rem;
-}
+  }
 
   .button--get-course {
     width: 28rem;
