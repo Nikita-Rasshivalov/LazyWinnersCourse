@@ -3,25 +3,27 @@ import { Maximize } from "lucide-react";
 
 export const FullScreenButton = ({toggleFullScreen}) => {
 
-  const buttonRef = useRef(null);
+  const buttonRef = useRef(null); 
 
   useEffect(() => {
     const button = buttonRef.current;
+
     const handleClick = () => {
-      console.log("a")
-      toggleFullScreen();
+      toggleFullScreen(); 
     };
 
     if (button) {
       button.addEventListener("click", handleClick);
+      button.addEventListener("touchstart", handleClick);
     }
-
     return () => {
       if (button) {
         button.removeEventListener("click", handleClick);
+        button.removeEventListener("touchstart", handleClick);
       }
     };
   }, [toggleFullScreen]); 
+
 
   return (
     <>
