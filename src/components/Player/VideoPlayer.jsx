@@ -116,14 +116,12 @@ export default function VideoPlayer({ src }) {
     setCurrentTime(formatTime(video.currentTime));
   };
   const toggleFullScreen = () => {
-  
     if (!document.fullscreenElement && !document.webkitFullscreenElement && !document.mozFullScreen) {
       document.documentElement.dataset.scrollY = window.scrollY;
-  
-      // Попытка войти в полноэкранный режим
+
       if (videoRef.current) {
         if (videoRef.current.requestFullscreen) {
-          videoRef.current.requestFullscreen(); // Стандартный метод для большинства браузеров
+          videoRef.current.requestFullscreen(); // Стандартный метод
         } else if (videoRef.current.webkitRequestFullscreen) {
           videoRef.current.webkitRequestFullscreen(); // Safari
         } else if (videoRef.current.mozRequestFullScreen) {
@@ -131,7 +129,6 @@ export default function VideoPlayer({ src }) {
         }
       }
     } else {
-      // Выход из полноэкранного режима
       if (document.exitFullscreen) {
         document.exitFullscreen();
       } else if (document.webkitExitFullscreen) {
