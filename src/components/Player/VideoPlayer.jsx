@@ -117,41 +117,32 @@ export default function VideoPlayer({ src }) {
   };
 
   const toggleFullScreen = () => {
-    if (videoRef.current) {
-      const isFullScreen =
-        document.fullscreenElement || document.webkitFullscreenElement;
+    const isFullscreen = document.fullscreenElement || document.webkitFullscreenElement;
+    const video = videoRef.current;
   
-      if (!isFullScreen) {
-
-        document.documentElement.dataset.scrollY = window.scrollY;
-  
-        if (videoRef.current.requestFullscreen) {
-          videoRef.current.requestFullscreen();
-        } else if (videoRef.current.webkitRequestFullscreen) {
-          videoRef.current.webkitRequestFullscreen();
-        }
-      } else {
-        if (document.exitFullscreen) {
-          document.exitFullscreen();
-        } else if (document.webkitExitFullscreen) {
-          document.webkitExitFullscreen();
+    if (isFullscreen) {
+      if (document.exitFullscreen) {
+        document.exitFullscreen();
+      } else if (document.webkitExitFullscreen) {
+        document.webkitExitFullscreen();
+      }
+    } else {
+      document.documentElement.dataset.scrollY = window.scrollY;
+      
+      if (video) {
+        const requestFullscreen = 
+          video.requestFullscreen ||
+          video.webkitRequestFullscreen ||
+          video.mozRequestFullScreen || 
+          video.msRequestFullscreen;
+          
+        if (requestFullscreen) {
+          requestFullscreen.call(video);
         }
       }
     }
   };
   
-
-  document.addEventListener("fullscreenchange", () => {
-    if (!document.fullscreenElement) {
-      window.scrollTo(0, document.documentElement.dataset.scrollY || 0);
-    }
-  });
-  
-  document.addEventListener("webkitfullscreenchange", () => {
-    if (!document.webkitFullscreenElement) {
-      window.scrollTo(0, document.documentElement.dataset.scrollY || 0);
-    }
-  });
   
   
   
