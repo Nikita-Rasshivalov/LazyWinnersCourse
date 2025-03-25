@@ -117,13 +117,25 @@ export default function VideoPlayer({ src }) {
   };
 
   const toggleFullScreen = () => {
-    if (!document.fullscreenElement) {
+    if (!document.fullscreenElement && !document.webkitFullscreenElement) {
       document.documentElement.dataset.scrollY = window.scrollY;
-      videoRef.current?.requestFullscreen?.();
+      if (videoRef.current) {
+        if (videoRef.current.requestFullscreen) {
+          videoRef.current.requestFullscreen();
+        } else if (videoRef.current.webkitRequestFullscreen) {
+          videoRef.current.webkitRequestFullscreen();
+        }
+      }
     } else {
-      document.exitFullscreen?.();
+      if (document.exitFullscreen) {
+        document.exitFullscreen();
+      } else if (document.webkitExitFullscreen) {
+        document.webkitExitFullscreen();
+      }
     }
   };
+  
+  
 
   if (!isVideoValid || !src) return null;
 
@@ -133,6 +145,7 @@ export default function VideoPlayer({ src }) {
         ref={videoRef}
         className="video"
         src={src}
+        playsInline 
         controlsList="noremoteplayback nofullscreen nodownload"
         onTimeUpdate={handleTimeUpdate}
         onLoadedMetadata={() =>

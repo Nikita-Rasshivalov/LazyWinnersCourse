@@ -97,6 +97,8 @@ input[type="range"] {
   transition: all 0.3s ease;
   border: none;
   outline: none;
+  fill: none;
+  stroke: #000 !important;
 }
 
 input[type="range"]::-webkit-slider-thumb {
@@ -124,6 +126,19 @@ input[type="range"]::-ms-thumb {
   border-radius: 50%;
   cursor: pointer;
 }
+
+video:not(:fullscreen)::-webkit-media-controls {
+  display: none !important;
+}
+
+video:fullscreen::-webkit-media-controls {
+  display: flex !important;
+}
+
+button, video {
+  -webkit-tap-highlight-color: transparent;
+}
+
 
 /* media */
 
