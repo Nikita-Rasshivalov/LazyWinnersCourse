@@ -116,23 +116,26 @@ export default function VideoPlayer({ src }) {
     setCurrentTime(formatTime(video.currentTime));
   };
 
-
-  const toggleFullScreen = () => {
+  const toggleFullScreen = (event) => {
+    event.preventDefault();
   
-    // Проверяем, находимся ли мы в полноэкранном режиме
+    // Проверяем, не в полноэкранном ли режиме
     if (!document.fullscreenElement && !document.webkitFullscreenElement) {
       // Сохраняем позицию прокрутки
       document.documentElement.dataset.scrollY = window.scrollY;
   
       if (videoRef.current) {
-        // Используем метод webkitEnterFullscreen для iOS
+        // Проверяем для Chrome и Safari на iOS
         if (videoRef.current.webkitEnterFullscreen) {
+          // Для iOS (как в Safari, так и в Chrome)
           videoRef.current.webkitEnterFullscreen();
         }
-        // Для обычных браузеров
+        // Для других браузеров с нативной поддержкой fullscreen
         else if (videoRef.current.requestFullscreen) {
           videoRef.current.requestFullscreen();
-        } else if (videoRef.current.webkitRequestFullscreen) {
+        }
+        // Для старых версий браузеров с webkit префиксом
+        else if (videoRef.current.webkitRequestFullscreen) {
           videoRef.current.webkitRequestFullscreen();
         }
       }
