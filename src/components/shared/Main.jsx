@@ -26,7 +26,7 @@ const Main = ({ openModal }) => {
               className="main__about-img"
               alt="aboutImg"
             />
-            <h4 className="">Привет!  Я и моя команда занимаемся трейдингом уже более 6 лет.</h4>
+            <h4>Привет!  Я и моя команда занимаемся трейдингом уже более 6 лет.</h4>
             <span className="main__text main__text-about">{ABOUT_TXT}</span>
             <div className="video--smaill-side">
               <VideoDiscriptionSmall />

@@ -14,16 +14,17 @@ const Header = () => {
           <span className="header__logo-text logo-text">Lazy Winners</span>
         </div>
         <div className="header__wrapper">
-          <div className="header__text">
-            <p>
-            «Все упирается в то, как много ты готов терять:
-              <span>
-                <span style={{ color: "#f0b90b" }}>Очень</span> - учась на своих
-                ошибках, или <span style={{ color: "#f0b90b" }}>один раз</span>, 
-                использовав наши услуги»
-              </span>
-            </p>
-          </div>
+          <p className="header__text">
+            <span> «Все упирается в то, как много ты готов терять:</span>
+            <span>
+              <span style={{ color: "#f0b90b" }}> Очень</span> - учась на своих
+              ошибках,
+            </span>
+            <span>
+              или <span style={{ color: "#f0b90b" }}> один </span>раз, применив
+              наши знания»
+            </span>
+          </p>
         </div>
         <button
           className="header__button button"

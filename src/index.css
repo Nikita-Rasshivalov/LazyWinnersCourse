@@ -27,11 +27,11 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  background-color: var(--bg-color);
 }
 
 .header,
 .footer {
-  background-color: var(--bg-color);
   color: var(--text-color-base);
 }
 
@@ -47,15 +47,8 @@ body {
 .footer__logo {
   display: flex;
   align-items: center;
-}
-
-.header__text > p {
-  display: flex;
-  flex-direction: column;
-}
-
-.logo-image {
-  width: 2.6rem;
+  flex-grow: 1;
+  flex-shrink: 0;
 }
 
 .header__button {
@@ -80,21 +73,17 @@ body {
 }
 
 .header__text {
-  display: flex;
-  flex-direction: row;
-  gap: 1rem;
-  justify-content: center;
+  display: block;
 }
 
 .header__wrapper {
   display: flex;
-  justify-content: center;
   flex-grow: 1;
+  width: 100%;
 }
 
 /* Стили для Main */
 .main {
-  background-color: var(--bg-color);
   color: var(--text-color-base);
   flex: 1 1 auto;
 }
@@ -189,8 +178,7 @@ body {
   background-color: var(--color-BtnBg);
   color: var(--color-TradeBg-txt);
   font-weight: 700;
-  font-size: 1em;
-  width: 10rem;
+  font-size: 1rem;
   border: none;
   outline: none;
   padding: 0.7rem;
@@ -227,8 +215,6 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 2.2rem;
-  height: 2.2rem;
   border-radius: 50%;
   background-color: var(--color-BtnBg);
   transition: background-color 0.3s;
@@ -238,11 +224,6 @@ body {
 .footer__socials-item:hover {
   background-color: #f39c12;
   transform: scale(1.1);
-}
-
-.footer__socials-icon {
-  width: 1.5rem;
-  height: 1.5rem;
 }
 
 /* media */
@@ -271,8 +252,13 @@ body {
   }
 
   .header__text {
-    align-items: center;
-    text-align: center;
+    text-align: justify;
+    font-size: 0.84rem;
+    padding: 0 0.5rem;
+  }
+
+  .logo-image {
+    width: 2.6rem;
   }
 
   .main__about {
@@ -305,7 +291,6 @@ body {
   }
 
   .button--get-course {
-    width: 50%;
     flex-direction: row-reverse;
     align-items: center;
     gap: 0.3rem;
@@ -315,6 +300,7 @@ body {
   .get-buttons__wrapper {
     display: flex;
     gap: 1rem;
+    font-size: 0.8rem;
   }
 
   .img--get-course {
@@ -331,7 +317,10 @@ body {
   .footer__socials {
     gap: 3.5rem;
   }
-
+  .footer__socials-item {
+    width: 3rem;
+    height: 3rem;
+  }
   .footer_dsc {
     font-size: 0.8rem;
     display: flex;
@@ -340,12 +329,58 @@ body {
   .footer_dsc-txt {
     text-align: center;
   }
+
+  .footer__logo {
+    display: none;
+    opacity: 0;
+  }
+
+  .footer__socials-icon {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+}
+
+/* 642px */
+@media (min-width: 642px) {
+  .main__about-img {
+    width: calc(25rem + 10vw);
+  }
+
+  .main__extra-data {
+    flex-direction: row;
+  }
+
+  .button--get-course {
+    width: auto;
+    gap: 0;
+  }
+  .footer__socials-item {
+    width: 4rem;
+    height: 4rem;
+  }
+
+  .footer__socials-icon {
+    width: 2rem;
+    height: 2rem;
+  }
+
+  .footer_dsc {
+    font-size: 1rem;
+  }
+
+  .footer__socials {
+    gap: 4.6rem;
+  }
+  .footer_dsc-txt {
+    text-align: end;
+  }
 }
 
 /* Medium (md) – устройства от 768px */
 @media (min-width: 768px) {
-  .header__text > p {
-    font-size: 1.3rem;
+  .header__text {
+    font-size: 1.491rem;
   }
 
   .main__about-img {
@@ -372,66 +407,106 @@ body {
   }
 
   .button--get-course {
-    width: 35%;
-    font-size: 1.25rem;
+    width: auto;
+    font-size: 1rem;
   }
 
   .get-buttons__wrapper {
-    justify-content: center;
+    justify-content: space-between;
+    flex-grow: 1;
   }
-
   .main__extra-data {
     margin-top: 0.8rem;
   }
 
   .main__course__currency-wrapper {
-    gap: 5rem;
+    gap: 2rem;
+    max-width: 1000px;
+    flex-grow: 1;
   }
 
-  .footer__socials-item {
-    width: 4.5rem;
-    height: 4.5rem;
-  }
-
-  .footer__socials-icon {
-    width: 2.5rem;
-    height: 2.5rem;
+  .footer__container {
+    flex-direction: row;
+    gap: 2rem;
   }
 
   .footer_dsc-txt {
     font-size: 1.3rem;
   }
+
+  .footer__socials {
+    gap: 0.6rem;
+}
 }
 
 /* Mid (md) – устройства от 1024 */
 @media (min-width: 1024px) {
   .header__button {
-    width: 80%;
-    padding: 1.4rem;
+    width: auto;
+    padding: 0.5rem;
     font-size: 2rem;
+    position: absolute;
+    top: 0.4rem;
+    right: 3rem;
   }
 
   .header__wrapper {
-    width: 90%;
+    padding: 0 1rem;
+  }
+
+  .header__text {
+    font-size: 1.84rem;
+    padding: 0;
+    text-align: start;
+  }
+  .logo-text {
+    font-size: 3rem;
+  }
+
+  .logo-image {
+    width: 3.5rem;
   }
 
   .img--get-course {
     position: absolute;
     width: 15%;
     left: 75%;
-    top: 18%;
+    top: 15%;
+  }
+
+  .main__course h3,
+  .main__about-info h4,
+  .main__text-about {
+    font-size: 1.5rem;
+  }
+
+  .main__about-info h4 {
+    text-align: justify;
+  }
+
+  .main__text-course {
+    font-size: 1.5rem;
   }
 
   .button--get-course {
-    width: 15rem;
+    width: 20rem;
     height: 4rem;
-    font-size: 1.5rem;
+    font-size: 2rem;
     flex-direction: row;
     justify-content: normal;
   }
 
   .button--get-course:hover {
     transform: scale(1.1);
+  }
+
+  .footer__logo {
+    display: flex;
+    opacity: 1;
+  }
+
+  .footer_dsc-txt {
+    font-size: 1.2rem;
   }
 }
 
@@ -441,11 +516,10 @@ body {
     padding: 0;
   }
   .logo-text {
-    font-size: 1.6rem;
+    font-size: 2rem;
   }
-
-  .header__wrapper {
-    width: 70%;
+  .logo-image {
+    width: 3rem;
   }
 
   .header__inner {
@@ -455,15 +529,33 @@ body {
   }
 
   .header__button {
-    width: 8rem;
-    padding: 0.5rem;
+    width: 15rem;
+    padding: 1rem;
     font-size: 1.3rem;
+    position: static;
+  }
+
+  .header__text {
+    text-align: end;
+    font-size: 1.25rem;
   }
 
   .main__about,
   .main__course {
     padding-top: 1.5rem;
   }
+
+  .main__text-course {
+    font-size: 1.2rem;
+}
+
+.main__course h3 {
+  font-size: 1.2rem;
+}
+
+.main__about-info h4{
+  padding-bottom: 0.5rem;
+}
 
   .main__container {
     flex-direction: row;
@@ -513,16 +605,23 @@ body {
 
   .footer__socials {
     gap: 1rem;
+    flex-grow: 1;
   }
 
   .footer_dsc {
     padding: 0 6rem;
-  }
+    flex-grow: 1;
+}
 
   .button--get-course {
     width: 10rem;
     height: auto;
     font-size: 1rem;
+  }
+
+  .footer__logo{
+    flex-shrink: 0;
+    justify-content: flex-end;
   }
 }
 
@@ -545,8 +644,8 @@ body {
     width: 50%;
   }
 
-  .header__text > p {
-    font-size: 3.5rem;
+  .header__text {
+    font-size: 2.5rem;
   }
 
   .text__icon {
@@ -558,11 +657,11 @@ body {
   }
 
   .main__about-img {
-    width: calc(60rem + 10vw);
+    width: calc(50rem + 10vw);
   }
 
   .main__about-info {
-    width: calc(60rem + 10vw);
+    width: calc(50rem + 10vw);
   }
 
   .main__extra-data {
@@ -578,8 +677,12 @@ body {
   }
 
   .main__text-course {
-    font-size: 2.5rem;
+    font-size: 2.8rem;
   }
+
+  .main__course h3, .main__about-info h4 {
+    font-size: 2.7rem;
+}
 
   .button--get-course {
     width: 28rem;
