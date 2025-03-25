@@ -115,26 +115,22 @@ export default function VideoPlayer({ src }) {
     setProgress((video.currentTime / video.duration) * 100);
     setCurrentTime(formatTime(video.currentTime));
   };
-  const toggleFullScreen = () => {
-    if (!document.fullscreenElement && !document.webkitFullscreenElement && !document.mozFullScreen) {
-      document.documentElement.dataset.scrollY = window.scrollY;
 
+  const toggleFullScreen = () => {
+    if (!document.fullscreenElement && !document.webkitFullscreenElement) {
+      document.documentElement.dataset.scrollY = window.scrollY;
       if (videoRef.current) {
         if (videoRef.current.requestFullscreen) {
-          videoRef.current.requestFullscreen(); // Стандартный метод
+          videoRef.current.requestFullscreen();
         } else if (videoRef.current.webkitRequestFullscreen) {
-          videoRef.current.webkitRequestFullscreen(); // Safari
-        } else if (videoRef.current.mozRequestFullScreen) {
-          videoRef.current.mozRequestFullScreen(); // Firefox
+          videoRef.current.webkitRequestFullscreen();
         }
       }
     } else {
       if (document.exitFullscreen) {
         document.exitFullscreen();
       } else if (document.webkitExitFullscreen) {
-        document.webkitExitFullscreen(); // Safari
-      } else if (document.mozCancelFullScreen) {
-        document.mozCancelFullScreen(); // Firefox
+        document.webkitExitFullscreen();
       }
     }
   };
