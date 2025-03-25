@@ -91,6 +91,19 @@ export const VolumeControl = ({ isMuted, setIsMuted, videoRef,localVolume,setLoc
     }
   }, [localVolume, setIsMuted, videoRef]);
 
+
+  useEffect(() => {
+    const handleVisibilityChange = () => {
+      if (!document.hidden && videoRef.current) {
+        setLocalVolume(videoRef.current.volume);
+        setIsMuted(videoRef.current.volume === 0);
+      }
+    };
+  
+    document.addEventListener("visibilitychange", handleVisibilityChange);
+    return () => document.removeEventListener("visibilitychange", handleVisibilityChange);
+  }, [videoRef, setLocalVolume, setIsMuted]);
+
   return (
     <div className="volume-control">
       <button onClick={toggleMute} className="control-button">

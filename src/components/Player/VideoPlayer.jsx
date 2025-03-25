@@ -1,8 +1,8 @@
 import React, { useRef, useState, useEffect, useCallback } from "react";
-import { VideoControl } from "./VideoControl";
-import { VolumeControl } from "./VolumeControl";
-import { SeekBar } from "./SeekBar";
-import { FullScreenButton } from "./FullScreenButton";
+import { VideoControl } from "./Controls/VideoControl";
+import { VolumeControl } from "./Controls/VolumeControl";
+import { SeekBar } from "./Controls/SeekBar";
+import { FullScreenButton } from "./Controls/FullScreenButton";
 import { formatTime } from "../../utils/formatTime";
 import "./videoPlayer.css";
 
@@ -117,23 +117,42 @@ export default function VideoPlayer({ src }) {
   };
 
   const toggleFullScreen = () => {
-    if (!document.fullscreenElement && !document.webkitFullscreenElement) {
-      document.documentElement.dataset.scrollY = window.scrollY;
-      if (videoRef.current) {
+    if (videoRef.current) {
+      const isFullScreen =
+        document.fullscreenElement || document.webkitFullscreenElement;
+  
+      if (!isFullScreen) {
+
+        document.documentElement.dataset.scrollY = window.scrollY;
+  
         if (videoRef.current.requestFullscreen) {
           videoRef.current.requestFullscreen();
         } else if (videoRef.current.webkitRequestFullscreen) {
           videoRef.current.webkitRequestFullscreen();
         }
-      }
-    } else {
-      if (document.exitFullscreen) {
-        document.exitFullscreen();
-      } else if (document.webkitExitFullscreen) {
-        document.webkitExitFullscreen();
+      } else {
+        if (document.exitFullscreen) {
+          document.exitFullscreen();
+        } else if (document.webkitExitFullscreen) {
+          document.webkitExitFullscreen();
+        }
       }
     }
   };
+  
+
+  document.addEventListener("fullscreenchange", () => {
+    if (!document.fullscreenElement) {
+      window.scrollTo(0, document.documentElement.dataset.scrollY || 0);
+    }
+  });
+  
+  document.addEventListener("webkitfullscreenchange", () => {
+    if (!document.webkitFullscreenElement) {
+      window.scrollTo(0, document.documentElement.dataset.scrollY || 0);
+    }
+  });
+  
   
   
 
