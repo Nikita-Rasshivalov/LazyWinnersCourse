@@ -1,8 +1,8 @@
 import { Volume2, VolumeX } from "lucide-react";
 import React, { useState, useEffect, useRef, useCallback } from "react";
 
-export const VolumeControl = ({ isMuted, setIsMuted, videoRef, localVolume, setLocalVolume }) => {
-  const [previousVolume, setPreviousVolume] = useState(1);
+export const VolumeControl = ({ isMuted, setIsMuted, videoRef,localVolume,setLocalVolume }) => {
+  const [previousVolume, setPreviousVolume] = useState(1); 
   const volumeBarRef = useRef(null);
 
   const updateVolume = useCallback(() => {
@@ -58,12 +58,11 @@ export const VolumeControl = ({ isMuted, setIsMuted, videoRef, localVolume, setL
   };
 
   const adjustVolume = useCallback((delta, event) => {
-    event?.preventDefault();
+    event.preventDefault();
     const newVolume = Math.min(Math.max(localVolume + delta, 0), 1);
     setLocalVolume(newVolume);
-  }, [localVolume, setLocalVolume]);
+  }, [localVolume,setLocalVolume]);
 
-  // Обработчик нажатий клавиш на ПК
   useEffect(() => {
     const handleKeyDown = (event) => {
       if (event.key === "ArrowUp") {
@@ -77,25 +76,20 @@ export const VolumeControl = ({ isMuted, setIsMuted, videoRef, localVolume, setL
     return () => document.removeEventListener("keydown", handleKeyDown);
   }, [adjustVolume]);
 
-  // Обновление громкости и бара громкости
   useEffect(() => {
     updateVolume();
     updateVolumeBar();
   }, [localVolume, updateVolume, updateVolumeBar]);
 
   useEffect(() => {
-    const video = videoRef.current;
-    if (!video) return;
-  
-    const handleVolumeChange = () => {
-      setLocalVolume(video.volume);
-      setIsMuted(video.volume === 0);
-      updateVolumeBar();
-    };
-  
-    video.addEventListener("volumechange", handleVolumeChange);
-    return () => video.removeEventListener("volumechange", handleVolumeChange);
-  }, [videoRef, setLocalVolume, setIsMuted, updateVolumeBar]);
+    if (localVolume === 0) {
+      setIsMuted(true);
+      videoRef.current.muted = true;
+    } else {
+      setIsMuted(false);
+      videoRef.current.muted = false;
+    }
+  }, [localVolume, setIsMuted, videoRef]);
 
   return (
     <div className="volume-control">
