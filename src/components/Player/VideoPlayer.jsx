@@ -26,6 +26,50 @@ export default function VideoPlayer({ src }) {
     }
   }, [isPlaying]);
 
+  const toggleFullScreen = useCallback((event) => {
+    event.preventDefault();
+    const isFullscreen = document.fullscreenElement || document.webkitFullscreenElement;
+
+    if (!isFullscreen) {
+      document.documentElement.dataset.scrollY = window.scrollY; // Save scroll position
+
+      if (videoRef.current) {
+        enterFullScreen(videoRef.current);
+      }
+    } else {
+      exitFullScreen();
+    }
+  }, []);
+
+  const enterFullScreen = (element) => {
+    if (element.webkitEnterFullscreen) {
+      element.webkitEnterFullscreen();
+      return;
+    }
+
+    if (element.requestFullscreen) {
+      element.requestFullscreen();
+      return;
+    }
+
+    if (element.webkitRequestFullscreen) {
+      element.webkitRequestFullscreen();
+      return;
+    }
+  };
+
+  const exitFullScreen = () => {
+    if (document.exitFullscreen) {
+      document.exitFullscreen();
+      return;
+    }
+
+    if (document.webkitExitFullscreen) {
+      document.webkitExitFullscreen();
+      return;
+    }
+  };
+
   useEffect(() => {
     if (!src) {
       setIsVideoValid(false);
@@ -35,29 +79,23 @@ export default function VideoPlayer({ src }) {
     const videoElement = videoRef.current;
 
     const handleError = () => setIsVideoValid(false);
-
     const handleLoadedData = () => {
       setIsVideoValid(true);
       setDuration(formatTime(videoElement.duration));
     };
-
     const handlePlay = () => {
       setIsPlaying(true);
     };
-
     const handlePause = () => {
       setIsPlaying(false);
     };
-
     const handleEnded = () => {
       setIsPlaying(false);
     };
-
     const handleVolumeChange = () => {
       setIsMuted(videoElement.muted);
       setLocalVolume(videoElement.volume);
     };
-
     const handleFullScreenChange = () => {
       const isFullscreen = !!document.fullscreenElement;
       if (!isFullscreen) {
@@ -69,10 +107,10 @@ export default function VideoPlayer({ src }) {
     const handleDoubleClick = (e) => {
       e.preventDefault();
       if (clickTimeout.current) {
-        clearTimeout(clickTimeout.current); 
+        clearTimeout(clickTimeout.current);
         clickTimeout.current = null;
       }
-      toggleFullScreen();
+      toggleFullScreen(e);
     };
 
     const handleOneClick = (e) => {
@@ -80,7 +118,7 @@ export default function VideoPlayer({ src }) {
       if (clickTimeout.current) {
         clearTimeout(clickTimeout.current);
       }
-    
+
       clickTimeout.current = setTimeout(() => {
         togglePlay();
         clickTimeout.current = null;
@@ -108,48 +146,13 @@ export default function VideoPlayer({ src }) {
       videoElement.removeEventListener("dblclick", handleDoubleClick);
       document.removeEventListener("fullscreenchange", handleFullScreenChange);
     };
-  }, [src, togglePlay]);
+  }, [src, togglePlay, toggleFullScreen]);
 
   const handleTimeUpdate = () => {
     const video = videoRef.current;
     setProgress((video.currentTime / video.duration) * 100);
     setCurrentTime(formatTime(video.currentTime));
   };
-
-  const toggleFullScreen = (event) => {
-    event.preventDefault();
-  
-    // Проверяем, не в полноэкранном ли режиме
-    if (!document.fullscreenElement && !document.webkitFullscreenElement) {
-      // Сохраняем позицию прокрутки
-      document.documentElement.dataset.scrollY = window.scrollY;
-  
-      if (videoRef.current) {
-        // Проверяем для Chrome и Safari на iOS
-        if (videoRef.current.webkitEnterFullscreen) {
-          // Для iOS (как в Safari, так и в Chrome)
-          videoRef.current.webkitEnterFullscreen();
-        }
-        // Для других браузеров с нативной поддержкой fullscreen
-        else if (videoRef.current.requestFullscreen) {
-          videoRef.current.requestFullscreen();
-        }
-        // Для старых версий браузеров с webkit префиксом
-        else if (videoRef.current.webkitRequestFullscreen) {
-          videoRef.current.webkitRequestFullscreen();
-        }
-      }
-    } else {
-      // Выход из полноэкранного режима
-      if (document.exitFullscreen) {
-        document.exitFullscreen();
-      } else if (document.webkitExitFullscreen) {
-        document.webkitExitFullscreen();
-      }
-    }
-  };
-  
-  
 
   if (!isVideoValid || !src) return null;
 
@@ -159,7 +162,7 @@ export default function VideoPlayer({ src }) {
         ref={videoRef}
         className="video"
         src={src}
-        playsInline 
+        playsInline
         controlsList="noremoteplayback nofullscreen nodownload"
         onTimeUpdate={handleTimeUpdate}
         onLoadedMetadata={() =>

@@ -17,12 +17,12 @@ const Header = () => {
           <p className="header__text">
             <span> «Как много ты готов терять?</span>
             <span>
-              <span style={{ color: "#f0b90b" }}> Очень</span> - учась на своих
-              ошибках,
+              <span style={{ color: "#f0b90b" }}> Достаточно </span>— учась на
+              своих ошибках или же
             </span>
             <span>
-              или <span style={{ color: "#f0b90b" }}> один </span>раз, применив
-              наши знания»
+              <span style={{ color: "#f0b90b" }}> раз</span>, применив наши
+              знания»
             </span>
           </p>
         </div>
