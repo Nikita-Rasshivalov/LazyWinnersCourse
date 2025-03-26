@@ -31,7 +31,7 @@ export default function VideoPlayer({ src }) {
     const isFullscreen = document.fullscreenElement || document.webkitFullscreenElement;
 
     if (!isFullscreen) {
-      document.documentElement.dataset.scrollY = window.scrollY; // Save scroll position
+      document.documentElement.dataset.scrollY = window.scrollY; 
 
       if (videoRef.current) {
         enterFullScreen(videoRef.current);

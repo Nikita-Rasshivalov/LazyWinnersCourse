@@ -81,6 +81,6 @@ export const TG_ICN_URL ="content/tg_icn.svg"
 
 export const INST_ICN_URL ="content/inst_icn.svg"
 
-export const VIDEO_URL = "content/video1.mp4"
+export const VIDEO_URL = "content/media/video1.mp4"
 
 
