@@ -59,7 +59,7 @@ const Footer = ({ openModal }) => {
         </div>
         <div className="footer__logo">
           <img
-            src="./content/logo.png"
+            src="./content/logo.webp"
             alt="Логотип"
             className="footer__logo-image logo-image"
           />

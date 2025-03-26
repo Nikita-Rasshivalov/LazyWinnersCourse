@@ -21,7 +21,6 @@ body {
   font-family: "Inter", serif;
   font-weight: 700;
   height: 100%;
-  font-display: swap;
 }
 
 .wrapper {
@@ -120,6 +119,7 @@ body {
 }
 
 .main__text-about {
+  display: block;
   text-align: justify;
   min-width: 18rem;
   min-height: 19rem;
