@@ -21,6 +21,7 @@ body {
   font-family: "Inter", serif;
   font-weight: 700;
   height: 100%;
+  font-display: swap;
 }
 
 .wrapper {
@@ -86,6 +87,8 @@ body {
 .main {
   color: var(--text-color-base);
   flex: 1 1 auto;
+  min-width: 19rem;
+  min-height: 100%;
 }
 
 .main__container {
@@ -118,11 +121,15 @@ body {
 
 .main__text-about {
   text-align: justify;
+  min-width: 18rem;
+  min-height: 19rem;
 }
 
 .main__about-img {
   width: calc(30rem + 10vw);
   border-radius: 1em;
+  min-width: 19rem;
+  min-height: 100%;
 }
 
 .main__about-info {
