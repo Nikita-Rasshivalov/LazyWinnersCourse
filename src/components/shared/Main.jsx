@@ -5,7 +5,7 @@ import { VideoDiscriptionSmall } from "../MainComponents/VideoDiscriptionSmall/V
 import GetButton from "../Buttons/GetButton";
 import VideoPlayer from "../Player/VideoPlayer";
 import {
-  ABOUT_TXT,
+  ABOUT_TXT_P1,ABOUT_TXT_P2,ABOUT_TXT_P3,ABOUT_TXT_P4,
   ABOUT_COURSE_TXT,
   TG_URL,
   VIDEO_URL,
@@ -27,7 +27,12 @@ const Main = ({ openModal }) => {
               alt="aboutImg"
             />
             <h4>Привет!  Я и моя команда занимаемся трейдингом уже более 6 лет.</h4>
-            <div className="main__text main__text-about">{ABOUT_TXT}</div>
+            <div className="main__text main__text-about">
+              <div className="textItem">{ABOUT_TXT_P1}</div>
+              <div className="textItem">{ABOUT_TXT_P2}</div>
+              <div className="textItem">{ABOUT_TXT_P3}</div>
+              <div className="textItem">{ABOUT_TXT_P4}</div>
+            </div>
             <div className="video--smaill-side">
               <VideoDiscriptionSmall />
               <VideoPlayer src={VIDEO_URL} />
