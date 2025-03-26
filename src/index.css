@@ -337,7 +337,8 @@ body {
   }
 
   .footer__logo {
-    display: none;
+    visibility: hidden;
+    position: absolute;
     opacity: 0;
   }
 
@@ -505,6 +506,7 @@ body {
   .footer__logo {
     display: flex;
     opacity: 1;
+    visibility:visible;
   }
 
   .footer_dsc-txt {
