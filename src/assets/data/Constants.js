@@ -54,9 +54,9 @@ Web3🌐
 Работа с ордерами, спредами и ликвидностью🔄
 `
 
-export const COURSE_PRICE = `700`
+export const COURSE_PRICE = `500`
 
-export const COURSE_PRICE_DISCOUNT = `300`
+export const COURSE_PRICE_DISCOUNT = `125`
 
 export const TG_URL = "https://t.me/lazywinners"
 

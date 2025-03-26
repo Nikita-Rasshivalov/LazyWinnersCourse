@@ -7,9 +7,11 @@ const Header = () => {
       <div className="header__inner">
         <div className="header__logo">
           <img
-            src="./content/logo.png"
+            src="./content/logo.webp"
             alt="Логотип"
             className="header__logo-image logo-image"
+            width={41}
+            height={35}
           />
           <span className="header__logo-text logo-text">Lazy Winners</span>
         </div>

@@ -22,9 +22,10 @@ const Main = ({ openModal }) => {
         <section className="main__about">
           <div className="main__about-info">
             <img
-              src="/content/abouImg.png"
+              src="/content/abouImg.webp"
               className="main__about-img"
               alt="aboutImg"
+              loading="lazy"
             />
             <h4>Привет!  Я и моя команда занимаемся трейдингом уже более 6 лет.</h4>
             <span className="main__text main__text-about">{ABOUT_TXT}</span>
