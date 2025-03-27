@@ -1,5 +1,4 @@
 User-agent: *
-Disallow: /content/media
 
 Host: https://lwinners.ru
 

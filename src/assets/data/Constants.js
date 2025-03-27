@@ -83,4 +83,8 @@ export const INST_ICN_URL ="content/inst_icn.svg"
 
 export const VIDEO_URL = "content/media/video1.mp4"
 
+export const GA_ID = "G-2K3RTFHBPP"
+
+export const YA_ID = "100634510"
+
 
