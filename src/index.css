@@ -281,6 +281,11 @@ body {
     width: 100%;
   }
 
+  .img__wrapper {
+    min-width: 18.5rem;
+    min-height: 11.9rem;
+  }
+
   .main__text-about {
     font-size: 0.8rem;
   }
@@ -393,6 +398,11 @@ body {
     float: left;
     margin-right: 1rem;
   }
+
+  .img__wrapper {
+    min-height: auto;
+  }
+
   .main__text-about {
     font-size: 1.2rem;
     display: block;
