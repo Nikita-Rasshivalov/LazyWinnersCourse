@@ -1,8 +1,6 @@
 User-agent: *
 Disallow: /content/media
 
-# Указываем основную версию сайта (без www)
 Host: https://lwinners.ru
 
-# Sitemap
 Sitemap: https://lwinners.ru/sitemap.xml

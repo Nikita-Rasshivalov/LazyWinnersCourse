@@ -517,6 +517,7 @@ body {
     display: flex;
     opacity: 1;
     visibility:visible;
+    position: relative;
   }
 
   .footer_dsc-txt {
