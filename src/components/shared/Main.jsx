@@ -4,9 +4,12 @@ import { VideoDiscriptionLarge } from "../MainComponents/VideoDiscriptionLarge/V
 import { VideoDiscriptionSmall } from "../MainComponents/VideoDiscriptionSmall/VideoDiscriptionSmall";
 import GetButton from "../Buttons/GetButton";
 import VideoPlayer from "../Player/VideoPlayer";
+import {CourseOverview} from "../MainComponents/CourseOverview"
 import {
-  ABOUT_TXT_P1,ABOUT_TXT_P2,ABOUT_TXT_P3,ABOUT_TXT_P4,
-  ABOUT_COURSE_TXT,
+  ABOUT_TXT_P1,
+  ABOUT_TXT_P2,
+  ABOUT_TXT_P3,
+  ABOUT_TXT_P4,
   TG_URL,
   VIDEO_URL,
 } from "../../assets/data/Constants";
@@ -26,7 +29,9 @@ const Main = ({ openModal }) => {
               className="main__about-img"
               alt="aboutImg"
             />
-            <h4>Привет!  Я и моя команда занимаемся трейдингом уже более 6 лет.</h4>
+            <h4>
+              Привет! Я и моя команда занимаемся трейдингом уже более 6 лет.
+            </h4>
             <div className="main__text main__text-about">
               <div className="textItem">{ABOUT_TXT_P1}</div>
               <div className="textItem">{ABOUT_TXT_P2}</div>
@@ -44,9 +49,7 @@ const Main = ({ openModal }) => {
             🚀 Хотите освоить блокчейн на новом уровне? Этот курс – ваш путь к
             глубокому пониманию криптоиндустрии!
           </h3>
-          <span className="main__text main__text-course">
-            {ABOUT_COURSE_TXT}
-          </span>
+          <CourseOverview />
           <div className="main__extra-data">
             <div className="get-buttons__wrapper" id="get-course__anchor">
               <GetButton
