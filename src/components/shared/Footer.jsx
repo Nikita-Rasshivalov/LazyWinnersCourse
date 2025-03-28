@@ -5,6 +5,7 @@ import {
   TG_ICN_URL,
   INST_ICN_URL,
 } from "../../assets/data/Constants";
+import {Logo} from  "../Logo"
 import React from "react";
 
 const Footer = ({ openModal }) => {
@@ -57,14 +58,7 @@ const Footer = ({ openModal }) => {
             Веду общение лично. По вопросам оплаты и любым другим - пишите.
           </span>
         </div>
-        <div className="footer__logo">
-          <img
-            src="./content/logo.webp"
-            alt="Логотип"
-            className="footer__logo-image logo-image"
-          />
-          <span className="footer__logo-text logo-text">Lazy Winners</span>
-        </div>
+        <Logo/>
       </div>
     </footer>
   );

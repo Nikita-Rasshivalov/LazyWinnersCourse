@@ -43,8 +43,7 @@ body {
   position: relative;
 }
 
-.header__logo,
-.footer__logo {
+.logo {
   display: flex;
   align-items: center;
   flex-grow: 1;
@@ -341,7 +340,7 @@ body {
     text-align: center;
   }
 
-  .footer__logo {
+  .footer__container .logo {
     visibility: hidden;
     position: absolute;
     opacity: 0;
@@ -513,10 +512,10 @@ body {
     transform: scale(1.1);
   }
 
-  .footer__logo {
+  .footer__container .logo {
     display: flex;
     opacity: 1;
-    visibility:visible;
+    visibility: visible;
     position: relative;
   }
 
@@ -635,7 +634,7 @@ body {
     font-size: 1rem;
   }
 
-  .footer__logo {
+  .footer__container .logo {
     flex-shrink: 0;
     justify-content: flex-end;
   }

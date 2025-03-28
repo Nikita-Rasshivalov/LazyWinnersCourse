@@ -1,18 +1,12 @@
 import { smoothScroll } from "../../utils/smoothScroll";
+import {Logo} from "../Logo"
 import React from "react";
 
 const Header = () => {
   return (
     <header className="header">
       <div className="header__inner">
-        <div className="header__logo">
-          <img
-            src="./content/logo.webp"
-            alt="Логотип"
-            className="header__logo-image logo-image"
-          />
-          <span className="header__logo-text logo-text">Lazy Winners</span>
-        </div>
+        <Logo />
         <div className="header__wrapper">
           <p className="header__text">
             <span> «Как много ты готов терять?</span>
