@@ -4,7 +4,7 @@ import { VideoDiscriptionLarge } from "../MainComponents/VideoDiscriptionLarge/V
 import { VideoDiscriptionSmall } from "../MainComponents/VideoDiscriptionSmall/VideoDiscriptionSmall";
 import GetButton from "../Buttons/GetButton";
 import VideoPlayer from "../Player/VideoPlayer";
-import {CourseOverview} from "../MainComponents/CourseOverview"
+import { CourseOverview } from "../MainComponents/CourseOverview";
 import {
   ABOUT_TXT_P1,
   ABOUT_TXT_P2,
@@ -28,6 +28,7 @@ const Main = ({ openModal }) => {
               src="/content/abouImg.webp"
               className="main__about-img"
               alt="aboutImg"
+              fetchpriority="high"
             />
             <h4>
               Привет! Я и моя команда занимаемся трейдингом уже более 6 лет.
