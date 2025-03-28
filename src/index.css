@@ -391,11 +391,13 @@ body {
     font-size: 1.491rem;
   }
 
+  .header__button {
+    width: 55%;
+  }
+
   .main__about-img {
     width: 55%;
     height: 30%;
-    float: left;
-    margin-right: 1rem;
   }
 
   .img__wrapper {
@@ -405,10 +407,7 @@ body {
   .main__text-about {
     font-size: 1.2rem;
     display: block;
-  }
-
-  .main__about-info {
-    display: block;
+    white-space: pre-wrap;
   }
 
   .main__container {
@@ -444,7 +443,7 @@ body {
   }
 
   .footer_dsc-txt {
-    font-size: 0.8rem;
+    font-size: 1.4rem;
   }
 
   .footer__socials {
