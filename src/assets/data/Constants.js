@@ -1,10 +1,10 @@
 export const COURSE_PRICE = `500`;
 
-export const COURSE_PRICE_DISCOUNT = `125`;
+export const COURSE_PRICE_DISCOUNT = `145`;
 
 export const TG_URL = "https://t.me/lazywinners";
 
-export const INST_URL = "https://www.instagram.com/pa1boys";
+export const INST_URL = "https://www.instagram.com/lazy.winners";
 
 export const CURRENCY_ICN_URL = "content/currency.svg";
 
